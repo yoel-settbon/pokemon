@@ -1,0 +1,3089 @@
+{   
+    "pokemons": [
+        {
+            "pokedex_id": 4,
+            "name": {
+                "en": "Charmander"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Feu"
+                }
+            ],
+            "stats": {
+                "hp": 39,
+                "atk": 52,
+                "def": 43
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 5,
+                        "name": "Charmeleon",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 6,
+                        "name": "Charizard",
+                        "condition": 20
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 5,
+            "name": {
+                "en": "Charmeleon"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Feu"
+                }
+            ],
+            "stats": {
+                "hp": 58,
+                "atk": 64,
+                "def": 58
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 4,
+                        "name": "Charmander",
+                        "condition": 10
+                    }
+                ],
+                "next": [
+                    {
+                        "pokedex_id": 6,
+                        "name": "Charizard",
+                        "condition": 20
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 6,
+            "name": {
+                "en": "Charizard"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Feu"
+                }
+            ],
+            "stats": {
+                "hp": 78,
+                "atk": 109,
+                "def": 78
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 4
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 4,
+                        "name": "Charmander",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 5,
+                        "name": "Charmeleon",
+                        "condition": 20
+                    }
+                ],
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 1,
+            "name": {
+                "en": "Bulbasaur"},
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Plante"
+                }
+            ],
+            "stats": {
+                "hp": 45,
+                "atk": 49,
+                "def": 49
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 2,
+                        "name": "Ivysaur",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 3,
+                        "name": "Venusaur",
+                        "condition": 20
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 2,
+            "name": {
+                "en": "Ivysaur"},
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Plante"
+                }
+            ],
+            "stats": {
+                "hp": 60,
+                "atk": 62,
+                "def": 63
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 1,
+                        "name": "Bulbasaur",
+                        "condition": 10
+                    }
+                ],
+                "next": [
+                    {
+                        "pokedex_id": 3,
+                        "name": "Venusaur",
+                        "condition": 20
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 3,
+            "name": {
+                "en": "Venusaur"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Plante"
+                }
+            ],
+            "stats": {
+                "hp": 80,
+                "atk": 82,
+                "def": 83
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 1,
+                        "name": "Bulbasaur",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 2,
+                        "name": "Ivysaur",
+                        "condition": 20
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 7,
+            "name": {
+                "fr": "Squirtle"},
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Eau"
+                }
+            ],
+            "stats": {
+                "hp": 44,
+                "atk": 48,
+                "def": 65
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 8,
+                        "name": "Wartortle",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 9,
+                        "name": "Blastoise",
+                        "condition": 20
+                    }
+                ]              
+            }
+        },
+        {
+            "pokedex_id": 8,
+            "name": {
+                "en": "Wartortle"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Eau"
+                }
+            ],
+            "stats": {
+                "hp": 59,
+                "atk": 63,
+                "def": 80
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 7,
+                        "name": "Squirtle",
+                        "condition": "Niveau 16"
+                    }
+                ],
+                "next": [
+                    {
+                        "pokedex_id": 9,
+                        "name": "Blastoise",
+                        "condition": "Niveau 36"
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 9,
+            "name": {
+                "en": "Blastoise"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Eau"
+                }
+            ],
+            "stats": {
+                "hp": 79,
+                "atk": 83,
+                "def": 100
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 7,
+                        "name": "Squirtle",
+                        "condition": "Niveau 16"
+                    },
+                    {
+                        "pokedex_id": 8,
+                        "name": "Wartortle",
+                        "condition": "Niveau 36"
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 151,
+            "name": {
+                "en": "Mew" },
+            "sprites": {
+                "regular": ""
+             },
+            "types": [
+                {
+                    "name": "Psy"
+                }
+            ],
+            "stats": {
+                "hp": 100,
+                "atk": 100,
+                "def": 100
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ]
+        },
+        {
+            "pokedex_id": 92,
+            "name": {
+                "en": "Gastly"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Spectre"}
+            ],
+            "stats": {
+                "hp": 30,
+                "atk": 35,
+                "def": 30
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 93,
+                        "name": "Haunter",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 94,
+                        "name": "Gengar",
+                        "condition": 20
+                    }
+                ]
+            } 
+        },
+        {
+            "pokedex_id": 93,
+            "name": {
+                "en": "Haunter" 
+            },
+            "sprites": {
+                "regular": ""
+             },
+            "types": [
+                {
+                    "name": "Spectre"
+                }
+                
+            ],
+            "stats": {
+                "hp": 45,
+                "atk": 50,
+                "def": 45
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 92,
+                        "name": "Gastly",
+                        "condition": 10
+                    }
+                ],
+                "next": [
+                    {
+                        "pokedex_id": 94,
+                        "name": "Gengar",
+                        "condition": 20
+                    }
+                ]
+            }
+            
+        },
+        {
+            "pokedex_id": 94,
+            "name": {
+                "en": "Gengar"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Spectre"
+                }
+            ],
+            "stats": {
+                "hp": 60,
+                "atk": 65,
+                "def": 60
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 92,
+                        "name": "Gastly",
+                        "condition": 10
+                    },
+                    {
+                        "pokedex_id": 93,
+                        "name": "Haunter",
+                        "condition": 20
+                    }
+                ],
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 25,
+
+            "name": {
+                "en": "Pikachu"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Électrik"
+                }
+            ],
+            "stats": {
+                "hp": 45,
+                "atk": 80,
+                "def": 50
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 385,
+            "name": {
+                "en": "Jirachi"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Acier"
+                }
+            ],
+            "stats": {
+                "hp": 100,
+                "atk": 100,
+                "def": 100
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": null
+        },
+        {
+            "pokedex_id": 107,
+            "name": {
+                "en": "Hitmonchan"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Combat"
+                }
+            ],
+            "stats": {
+                "hp": 50,
+                "atk": 105,
+                "def": 79
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 2
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }        
+        },
+        {
+            "pokedex_id": 147,
+            "name": {
+                "en": "Dratini"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Dragon"
+                }
+            ],
+            "stats": {
+                "hp": 41,
+                "atk": 64,
+                "def": 45
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 2
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 148,
+                        "name": "Dragonair",
+                        "condition": 15
+                    },
+                    {
+                        "pokedex_id": 149,
+                        "name": "Dragonite",
+                        "condition": 30
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 148,
+            "name": {
+                "en": "Dragonair"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Dragon"
+                 }
+            ],
+            "stats": {
+                "hp": 61,
+                "atk": 84,
+                "def": 65
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 2
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 147,
+                        "name": "Dratini",
+                        "condition": 15
+                    }
+                ],
+                "next": [
+                    {
+                        "pokedex_id": 149,
+                        "name": "Dragonite",
+                        "condition": 30
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 149,
+            "name": {
+                "en": "Dragonite"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Dragon"}
+            ],
+            "stats": {
+                "hp": 91,
+                "atk": 134,
+                "def": 95
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 4
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 2
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 147,
+                        "name": "Dratini",
+                        "condition": 15
+                    },
+                    {
+                        "pokedex_id": 148,
+                        "name": "Dragonair",
+                        "condition": 30
+                    }
+                ],
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 122,
+            "name": {
+                "en": "M. Mime"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Fée"
+                }
+            ],
+            "stats": {
+                "hp": 40,
+                "atk": 45,
+                "def": 65
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 131,
+            "name": {
+                "en": "Lapras"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Glace"
+                }
+            ],
+            "stats": {
+                "hp": 130,
+                "atk": 85,
+                "def": 80
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": null
+        },
+        {
+            "pokedex_id": 123,
+            "name": {
+                "en": "Scyther"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Insecte"
+                }
+            ],
+            "stats": {
+                "hp": 70,
+                "atk": 110,
+                "def": 80
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 4
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 143,
+            "name": {
+                "en": "Snorlax"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Normal"}
+            ],
+            "stats": {
+                "hp": 160,
+                "atk": 110,
+                "def": 65
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 88,
+            "name": {
+                "en": "Grimer"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Poison"}
+            ],
+            "stats": {
+                "hp": 80,
+                "atk": 80,
+                "def": 50
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 89,
+                        "name": "Muk",
+                        "condition": 15
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 89,
+            "name": {
+                "en": "Muk"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Poison"}
+            ],
+            "stats": {
+                "hp": 105,
+                "atk": 105,
+                "def": 75
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 0.5
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 88,
+                        "name": "Grimer",
+                        "condition": 15
+                    }
+                ],
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 95,
+            "name": {
+                "en": "Onix"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Roche"}
+            ],
+            "stats": {
+                "hp": 35,
+                "atk": 45,
+                "def": 160
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 4
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 4
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 104,
+            "name": {
+                "en": "Cubone"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Sol"}
+            ],
+            "stats": {
+                "hp": 50,
+                "atk": 50,
+                "def": 95
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": [
+                    {
+                        "pokedex_id": 105,
+                        "name": "Marowak",
+                        "condition": 15
+                    }
+                ]
+            }
+        },
+        {
+            "pokedex_id": 105,
+            "name": {
+                "en": "Marowak"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Sol"
+                }
+            ],
+            "stats": {
+                "hp": 60,
+                "atk": 80,
+                "def": 110
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": {
+                "pre": [
+                    {
+                        "pokedex_id": 104,
+                        "name": "Cubone",
+                        "condition": 15
+                    }
+                ],
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 302,
+            "name": {
+                "en": "Sableye"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Ténèbres"
+                }
+            ],
+            "stats": {
+                "hp": 50,
+                "atk": 75,
+                "def": 75
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 2
+                }
+            ],
+            "evolution": {
+                "pre": null,
+                "next": null
+            }
+        },
+        {
+            "pokedex_id": 249,
+            "name": {
+                "en": "Lugia"
+            },
+            "sprites": {
+                "regular": ""
+            },
+            "types": [
+                {
+                    "name": "Vol"}
+            ],
+            "stats": {
+                "hp": 106,
+                "atk": 90,
+                "def": 130
+            },
+            "resistances": [
+                {
+                    "name": "Normal",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Plante",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Feu",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Eau",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Électrik",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Glace",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Combat",
+                    "multiplier": 0.25
+                },
+                {
+                    "name": "Poison",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Sol",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Vol",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Psy",
+                    "multiplier": 0.5
+                },
+                {
+                    "name": "Insecte",
+                    "multiplier": 0
+                },
+                {
+                    "name": "Roche",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Spectre",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Dragon",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Ténèbres",
+                    "multiplier": 2
+                },
+                {
+                    "name": "Acier",
+                    "multiplier": 1
+                },
+                {
+                    "name": "Fée",
+                    "multiplier": 1
+                }
+            ],
+            "evolution": null
+        }
+
+
+
+
+
+    ]
+}
