@@ -13,7 +13,7 @@ class Menu:
         self.battle = pygame.image.load("assets/image/battle.webp")
         self.battle = pygame.transform.scale(self.battle, (self.WIDTH, self.HEIGHT)) 
         self.tittle = pygame.image.load("assets/image/tittle.png")
-
+             
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
 
