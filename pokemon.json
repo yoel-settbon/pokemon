@@ -1,0 +1,32 @@
+{
+    "all_pokemons": [
+        {
+            "id": 1,
+            "nom": "Pikachu",
+            "type": "Électrique",
+            "pv": 35,
+            "attaque": 55,
+            "defense": 40,
+            "vitesse": 90,
+            "attaques": [
+                {"nom": "Éclair", "puissance": 40, "type": "Électrique"},
+                {"nom": "Vive-Attaque", "puissance": 40, "type": "Normal"}
+            ],
+            "evolution": "Raichu"
+        },
+        {
+            "id": 2,
+            "nom": "Bulbizarre",
+            "type": "Plante",
+            "pv": 45,
+            "attaque": 49,
+            "defense": 49,
+            "vitesse": 45,
+            "attaques": [
+                {"nom": "Fouet Lianes", "puissance": 45, "type": "Plante"},
+                {"nom": "Charge", "puissance": 40, "type": "Normal"}
+            ],
+            "evolution": "Herbizarre"
+        }
+    ]
+}
