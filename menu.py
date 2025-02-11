@@ -1,13 +1,12 @@
-# menu.py
 import pygame
-
+              
 class Menu:
     def __init__(self, width=900, height=600):
         self.HEIGHT = height
         self.WIDTH = width
         self.window = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Pokemon Fighters")
-
+              
         self.background = pygame.image.load("assets/image/background2.jpg")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
         self.battle = pygame.image.load("assets/image/battle.webp")
