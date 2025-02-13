@@ -1,5 +1,5 @@
-from trainer import Trainer
-from pokemon import Pokemon
+from models.trainer import Trainer
+from models.pokemon import Pokemon
 
 # Chargement des Pokémon (exemple simple, remplace par une lecture JSON si nécessaire)
 pikachu_data = {"name": "Pikachu", "type": "Électrik", "pv": 35, "attack": 55, "defense": 40, "speed": 90, "attacks": [{"name": "Éclair", "type": "Électrik", "power": 40}]}
