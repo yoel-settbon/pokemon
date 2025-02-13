@@ -1,4 +1,6 @@
 import pygame
+import json
+from time import sleep
 
 class Pokemon:
     def __init__(self, name, type, pv, attack, defense, speed, attacks, evolution=None):
@@ -6,7 +8,6 @@ class Pokemon:
         self.type = type
         self.pv = pv
         self.pv_max = pv
-        self.attack = attack
         self.attack = attack
         self.defense = defense
         self.speed = speed
@@ -23,13 +24,29 @@ class Pokemon:
     def perform_attack(self, other_pokemon, attack_name):
         attack = next((a for a in self.attacks if a["name"] == attack_name), None)
         if attack:
-            damage = max(attack["power"] - other_pokemon.defense, 1)
+            effectiveness = self.type_advantage(attack["type"], other_pokemon.type)
+            damage = max(int((attack["power"] * (self.attack / other_pokemon.defense)) * effectiveness), 1)
             other_pokemon.pv = max(other_pokemon.pv - damage, 0)
             return f"{self.name} used {attack_name}! {other_pokemon.name} lost {damage} HP."
         return f"{self.name} does not know this attack!"
 
+    def type_advantage(self, attack_type, target_type):
+        effectiveness_chart = {
+            "Fire": {"Grass": 2.0, "Water": 0.5, "Fire": 0.5},
+            "Water": {"Fire": 2.0, "Grass": 0.5, "Water": 0.5},
+            "Grass": {"Water": 2.0, "Fire": 0.5, "Grass": 0.5}
+        }
+        return effectiveness_chart.get(attack_type, {}).get(target_type, 1.0)
+
     def is_ko(self):
         return self.pv <= 0
+
+    def evolve(self):
+        if self.evolution:
+            self.__dict__.update(self.evolution)
+            self.evolution = None
+            return f"{self.name} a évolué !"
+        return f"{self.name} ne peut pas évoluer."
 
 class Trainer:
     def __init__(self, name, pokemons):
@@ -121,3 +138,45 @@ class Menu:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
                         self.menu()
+
+
+pygame.init()
+
+pokedex = Pokedex("test/pokedex.json")
+
+charmander = pokedex.get_pokemon_by_name("Charmander")
+squirtle = pokedex.get_pokemon_by_name("Squirtle")
+
+player = Trainer("Ash", [charmander])
+enemy = Trainer("Gary", [squirtle])
+
+print(f"{player.name}'s Team:")
+for p in player.display_team():
+    print(p)
+
+print(f"\n{enemy.name}'s Team:")
+for p in enemy.display_team():
+    print(p)
+
+print("\n⚔️ Combat commence ! ⚔️\n")
+
+while not (player.pokemons[0].is_ko() or enemy.pokemons[0].is_ko()):
+    attack_choice = player.pokemons[0].attacks[0]["name"]  # Sélection automatique
+    print(player.pokemons[0].perform_attack(enemy.pokemons[0], attack_choice))
+    
+    if enemy.pokemons[0].is_ko():
+        print(f"\n{enemy.pokemons[0].name} est K.O. ! {player.name} gagne ! 🎉")
+        break
+    
+    sleep(1)
+
+    attack_choice = enemy.pokemons[0].attacks[0]["name"]
+    print(enemy.pokemons[0].perform_attack(player.pokemons[0], attack_choice))
+
+    if player.pokemons[0].is_ko():
+        print(f"\n{player.pokemons[0].name} est K.O. ! {enemy.name} gagne ! 😢")
+        break
+    
+    sleep(1)
+
+pygame.quit()

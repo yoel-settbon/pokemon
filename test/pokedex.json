@@ -1,0 +1,29 @@
+{
+    "all_pokemons": [
+        {
+            "name": "Charmander",
+            "type": "Fire",
+            "pv": 39,
+            "attack": 52,
+            "defense": 43,
+            "speed": 65,
+            "attacks": [
+                {"name": "Flamethrower", "type": "Fire", "power": 90},
+                {"name": "Scratch", "type": "Normal", "power": 40}
+            ]
+        },
+        {
+            "name": "Squirtle",
+            "type": "Water",
+            "pv": 44,
+            "attack": 48,
+            "defense": 65,
+            "speed": 43,
+            "attacks": [
+                {"name": "Water Gun", "type": "Water", "power": 40},
+                {"name": "Tackle", "type": "Normal", "power": 40}
+            ]
+        }
+    ],
+    "player_pokemon": []
+}
