@@ -1,5 +1,5 @@
 import json
-from pokemon import Pokemon
+from models.pokemon import Pokemon
 class Pokedex:
     def __init__(self, json_file):
         with open(json_file, "r", encoding="utf-8") as f:
