@@ -1,5 +1,4 @@
 import pygame
-              
 class Menu:
     def __init__(self, width=900, height=600):
         self.HEIGHT = height
@@ -7,11 +6,10 @@ class Menu:
         self.window = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Pokemon Fighters")
               
-        self.background = pygame.image.load("assets/image/background2.jpg")
+        self.background = pygame.image.load("assets/image/background.png")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
         self.battle = pygame.image.load("assets/image/battle.webp")
         self.battle = pygame.transform.scale(self.battle, (self.WIDTH, self.HEIGHT)) 
-        self.tittle = pygame.image.load("assets/image/tittle.png")
              
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
@@ -26,9 +24,8 @@ class Menu:
 
     def menu(self):
         self.window.blit(self.background, (0, 0))
-        self.window.blit(self.tittle, (150, 0))
-        self.draw_text("FIGHTERS", self.tittle_font, self.WHITE, self.WIDTH // 1.9, self.HEIGHT // 2.4)
-        self.draw_text("NEW GAME", self.menu_font, self.WHITE, self.WIDTH // 1.9, self.HEIGHT // 1.8)
+        self.draw_text("FIGHTERS", self.tittle_font, self.WHITE, self.WIDTH // 2.6, self.HEIGHT // 2.4)
+        self.draw_text("NEW GAME", self.menu_font, self.WHITE, self.WIDTH // 2.6, self.HEIGHT // 1.8)
         pygame.display.update()
 
         running = True
@@ -42,9 +39,8 @@ class Menu:
 
     def start(self):
         self.window.blit(self.background, (0, 0))
-        self.window.blit(self.tittle, (150, 0))
-        self.draw_text("FIGHTERS", self.tittle_font, self.WHITE, self.WIDTH // 1.9, self.HEIGHT // 2.4)
-        self.draw_text("Press ENTER to start", self.menu_font, self.WHITE, self.WIDTH // 1.9, self.HEIGHT // 1.5)
+        self.draw_text("FIGHTERS", self.tittle_font, self.WHITE, self.WIDTH // 2.6, self.HEIGHT // 2.4)
+        self.draw_text("Press ENTER to start", self.menu_font, self.WHITE, self.WIDTH // 2.6, self.HEIGHT // 1.3)
         pygame.display.update()
 
         running = True
