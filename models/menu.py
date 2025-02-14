@@ -1,10 +1,8 @@
 import pygame
 import sys
+from models.game import Game  # Import the Game class
 
 pygame.init()
-
-import pygame
-import sys
 
 class Menu:
     def __init__(self, width, height, background_image, font_path, menu_options):
@@ -51,7 +49,8 @@ class Menu:
                     self.selected_option = (self.selected_option + 1) % len(self.menu_options)
                 elif event.key == pygame.K_RETURN:
                     if self.menu_options[self.selected_option] == 'New Game':
-                        print("Nouveau jeu lancé!")
+                        game = Game()  # Instantiate the Game class
+                        game.run()  # Run the Game class
                     elif self.menu_options[self.selected_option] == 'Load Game':
                         print("Chargement du jeu...")
                     elif self.menu_options[self.selected_option] == 'Quit':
@@ -66,4 +65,3 @@ class Menu:
         
         pygame.quit()
         sys.exit()
-
