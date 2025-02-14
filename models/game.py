@@ -7,7 +7,7 @@ class Game:
         self.WIDTH, self.HEIGHT = 1100, 700
         self.win = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Combat Pokémon")
-
+    
         self.WHITE = (255, 255, 255)
         self.BLACK = (0, 0, 0)
         self.background = pygame.image.load("assets/image/battle.webp")
@@ -22,21 +22,6 @@ class Game:
         self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
         self.player_message = ""
         self.opponent_message = ""
-
-    class Pokemon:
-        def __init__(self, name, hp, attack):
-            self.name = name
-            self.hp = hp
-            self.max_hp = hp
-            self.attack = attack
-
-        def attack_pokemon(self, other):
-            damage = random.randint(0, self.attack)
-            other.hp -= damage
-            return damage
-
-        def reset_hp(self):
-            self.hp = self.max_hp
 
     def display_pokemon_choice(self, selected_index):
         self.win.blit(self.background, (0, 0))
@@ -110,9 +95,7 @@ class Game:
                 opponent_message_text = font.render(self.opponent_message, True, self.WHITE)
                 self.win.blit(opponent_message_text, (50, 200))
                 pygame.display.flip()
-
                 pygame.time.delay(1000)
-
             if self.player_pokemon.hp <= 0:
                 self.player_pokemon = self.choose_pokemon()
             else:
