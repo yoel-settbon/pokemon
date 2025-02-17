@@ -20,6 +20,11 @@ class Menu:
 
         self.menu_font = pygame.font.Font(font_path, 60)
         self.title_font = pygame.font.Font(font_path, 100)
+    
+    def menu_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/menu-theme.wav')
+        pygame.mixer.music.play(-1)
 
     def draw_text(self, text, font, color, x, y):
         text_surf = font.render(text, True, color)
@@ -51,6 +56,7 @@ class Menu:
                     if self.menu_options[self.selected_option] == 'New Game':
                         game = Game()
                         game.run()
+                        self.game_music()
                     elif self.menu_options[self.selected_option] == 'Load Game':
                         print("Chargement du jeu...")
                     elif self.menu_options[self.selected_option] == 'Quit':
@@ -58,6 +64,7 @@ class Menu:
         return True
 
     def run(self):
+        self.menu_music()
         running = True
         while running:
             running = self.handle_input()

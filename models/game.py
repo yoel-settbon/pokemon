@@ -4,10 +4,11 @@ import random
 class Game:
     def __init__(self):
         pygame.init()
+        pygame.mixer.init()
         self.WIDTH, self.HEIGHT = 1100, 700
         self.win = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Combat Pokémon")
-    
+
         self.WHITE = (255, 255, 255)
         self.BLACK = (0, 0, 0)
         self.background = pygame.image.load("assets/image/battle.webp")
@@ -22,6 +23,30 @@ class Game:
         self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
         self.player_message = ""
         self.opponent_message = ""
+
+    class Pokemon:
+        def __init__(self, name, hp, attack):
+            self.name = name
+            self.hp = hp
+            self.max_hp = hp
+            self.attack = attack
+
+        def attack_pokemon(self, other):
+            damage = random.randint(0, self.attack)
+            other.hp -= damage
+            return damage
+
+        def reset_hp(self):
+            self.hp = self.max_hp
+
+    def game_music(self):
+        print("🎵 Tentative de lancement de la musique du jeu...")
+        pygame.mixer.music.stop()  
+        pygame.mixer.music.load('assets/audio/battle-theme.wav')  
+        pygame.mixer.music.play(-1)  
+        pygame.mixer.music.set_volume(1.0)  
+        print("✅ Musique de combat lancée !")
+
 
     def display_pokemon_choice(self, selected_index):
         self.win.blit(self.background, (0, 0))
@@ -53,54 +78,52 @@ class Game:
                     self.display_pokemon_choice(selected_index)
 
     def run(self):
-        while True:
-            running = True
-            player_turn = True
+        self.game_music()
+        running = True
+        player_turn = True
+        self.player_pokemon.reset_hp()
+        self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
+        self.opponent_pokemon.reset_hp()
+        self.player_message = ""
+        self.opponent_message = ""
+
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE and player_turn:
+                        damage = self.player_pokemon.attack_pokemon(self.opponent_pokemon)
+                        self.player_message = f"{self.player_pokemon.name} attaque {self.opponent_pokemon.name} et inflige {damage} dégâts!"
+                        if self.opponent_pokemon.hp <= 0:
+                            self.player_message += f" {self.opponent_pokemon.name} est KO!"
+                            running = False
+                        player_turn = False
+
+            if not player_turn and self.opponent_pokemon.hp > 0:
+                damage = self.opponent_pokemon.attack_pokemon(self.player_pokemon)
+                self.opponent_message = f"{self.opponent_pokemon.name} attaque {self.player_pokemon.name} et inflige {damage} dégâts!"
+                if self.player_pokemon.hp <= 0:
+                    self.opponent_message += f" {self.player_pokemon.name} est KO!"
+                    running = False
+                player_turn = True
+
+            self.win.blit(self.background, (0, 0))
+            font = pygame.font.Font(None, 36)
+            text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
+            self.win.blit(text, (30, 500))
+            text = font.render(f"{self.opponent_pokemon.name} HP: {self.opponent_pokemon.hp}", True, self.WHITE)
+            self.win.blit(text, (860, 200))
+            player_message_text = font.render(self.player_message, True, self.WHITE)
+            self.win.blit(player_message_text, (30, 450))
+            opponent_message_text = font.render(self.opponent_message, True, self.WHITE)
+            self.win.blit(opponent_message_text, (50, 200))
+            pygame.display.flip()
+
+            pygame.time.delay(1000)
+
+        if self.player_pokemon.hp <= 0:
+            self.player_pokemon = self.choose_pokemon()
+        else:
             self.player_pokemon.reset_hp()
-            self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
-            self.opponent_pokemon.reset_hp()
-            self.player_message = ""
-            self.opponent_message = ""
-
-            while running:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        exit()
-                    elif event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_SPACE and player_turn:
-                            damage = self.player_pokemon.attack_pokemon(self.opponent_pokemon)
-                            self.player_message = f"{self.player_pokemon.name} attaque {self.opponent_pokemon.name} et inflige {damage} dégâts!"
-                            if self.opponent_pokemon.hp <= 0:
-                                self.player_message += f" {self.opponent_pokemon.name} est KO!"
-                                running = False
-                            player_turn = False
-
-                if not player_turn and self.opponent_pokemon.hp > 0:
-                    damage = self.opponent_pokemon.attack_pokemon(self.player_pokemon)
-                    self.opponent_message = f"{self.opponent_pokemon.name} attaque {self.player_pokemon.name} et inflige {damage} dégâts!"
-                    if self.player_pokemon.hp <= 0:
-                        self.opponent_message += f" {self.player_pokemon.name} est KO!"
-                        running = False
-                    player_turn = True
-
-                self.win.blit(self.background, (0, 0))
-                font = pygame.font.Font(None, 36)
-                text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
-                self.win.blit(text, (30, 500))
-                text = font.render(f"{self.opponent_pokemon.name} HP: {self.opponent_pokemon.hp}", True, self.WHITE)
-                self.win.blit(text, (860, 200))
-                player_message_text = font.render(self.player_message, True, self.WHITE)
-                self.win.blit(player_message_text, (30, 450))
-                opponent_message_text = font.render(self.opponent_message, True, self.WHITE)
-                self.win.blit(opponent_message_text, (50, 200))
-                pygame.display.flip()
-                pygame.time.delay(1000)
-            if self.player_pokemon.hp <= 0:
-                self.player_pokemon = self.choose_pokemon()
-            else:
-                self.player_pokemon.reset_hp()
-
-if __name__ == "__main__":
-    game = Game()
-    game.run()
