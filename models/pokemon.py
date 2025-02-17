@@ -1,22 +1,16 @@
 import random
 
 class Pokemon:
-    def __init__(self, name, level, hp, attacks):
+    def __init__(self, name, hp, attack):
         self.name = name
-        self.level = level
         self.hp = hp
-        self.attacks = attacks
+        self.max_hp = hp
+        self.attack = attack
 
-    def take_damage(self, damage):
-        self.hp -= damage
-        if self.hp < 0:
-            self.hp = 0
+    def attack_pokemon(self, other):
+        damage = random.randint(0, self.attack)
+        other.hp -= damage
+        return damage
 
-    def is_alive(self):
-        return self.hp > 0
-
-    def attack(self, other_pokemon):
-        attack = random.choice(self.attacks)
-        damage = random.randint(5, 15)
-        print(f"{self.name} attaque {other_pokemon.name} avec {attack} pour {damage} dégâts.")
-        other_pokemon.take_damage(damage)
+    def reset_hp(self):
+        self.hp = self.max_hp

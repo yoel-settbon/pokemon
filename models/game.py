@@ -1,54 +1,28 @@
 import pygame
 import random
+from pokemon import Pokemon 
 
 class Game:
     def __init__(self):
         pygame.init()
         self.WIDTH, self.HEIGHT = 1100, 700
         self.win = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
-        pygame.display.set_caption("Combat Pokémon")
+        pygame.display.set_caption("Pokemon Fighters")
 
         self.WHITE = (255, 255, 255)
         self.BLACK = (0, 0, 0)
         self.background = pygame.image.load("assets/image/battle.webp")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
-        self.pikachu = self.Pokemon("Pikachu", 100, 20)
-        self.charmander = self.Pokemon("Charmander", 100, 15)
-        self.bulbasaur = self.Pokemon("Bulbasaur", 100, 18)
-        self.squirtle = self.Pokemon("Squirtle", 100, 16)
+        self.pikachu = Pokemon("Pikachu", 100, 20)
+        self.charmander = Pokemon("Charmander", 100, 15)
+        self.bulbasaur = Pokemon("Bulbasaur", 100, 18)
+        self.squirtle = Pokemon("Squirtle", 100, 16)
 
         self.player_pokemon = self.choose_pokemon()
         self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
         self.player_message = ""
         self.opponent_message = ""
-
-    class Pokemon:
-        def __init__(self, name, hp, attack):
-            self.name = name
-            self.hp = hp
-            self.max_hp = hp
-            self.attack = attack
-
-        def attack_pokemon(self, other):
-            damage = random.randint(0, self.attack)
-            other.hp -= damage
-            return damage
-
-        def reset_hp(self):
-            self.hp = self.max_hp
-
-    def display_pokemon_choice(self, selected_index):
-        self.win.blit(self.background, (0, 0))
-        font = pygame.font.Font(None, 36)
-        text = font.render("Choisissez votre Pokémon:", True, self.WHITE)
-        self.win.blit(text, (50, 50))
-        options = ["Pikachu", "Charmander", "Bulbasaur", "Squirtle"]
-        for i, option in enumerate(options):
-            color = self.WHITE if i != selected_index else (255, 0, 0)
-            text = font.render(option, True, color)
-            self.win.blit(text, (50, 100 + i * 50))
-        pygame.display.flip()
 
     def choose_pokemon(self):
         selected_index = 0
@@ -85,17 +59,17 @@ class Game:
                     elif event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_SPACE and player_turn:
                             damage = self.player_pokemon.attack_pokemon(self.opponent_pokemon)
-                            self.player_message = f"{self.player_pokemon.name} attaque {self.opponent_pokemon.name} et inflige {damage} dégâts!"
+                            self.player_message = f"{self.player_pokemon.name} attack {self.opponent_pokemon.name} deals {damage} damages!"
                             if self.opponent_pokemon.hp <= 0:
-                                self.player_message += f" {self.opponent_pokemon.name} est KO!"
+                                self.player_message += f"{self.opponent_pokemon.name} is KO!"
                                 running = False
                             player_turn = False
 
                 if not player_turn and self.opponent_pokemon.hp > 0:
                     damage = self.opponent_pokemon.attack_pokemon(self.player_pokemon)
-                    self.opponent_message = f"{self.opponent_pokemon.name} attaque {self.player_pokemon.name} et inflige {damage} dégâts!"
+                    self.opponent_message = f"{self.opponent_pokemon.name} attack {self.player_pokemon.name} deals {damage} damages!"
                     if self.player_pokemon.hp <= 0:
-                        self.opponent_message += f" {self.player_pokemon.name} est KO!"
+                        self.opponent_message += f" {self.player_pokemon.name} is KO!"
                         running = False
                     player_turn = True
 
@@ -117,6 +91,18 @@ class Game:
                 self.player_pokemon = self.choose_pokemon()
             else:
                 self.player_pokemon.reset_hp()
+                
+    def display_pokemon_choice(self, selected_index):
+        self.win.blit(self.background, (0, 0))
+        font = pygame.font.Font(None, 36)
+        text = font.render("Pick your Pokémon:", True, self.WHITE)
+        self.win.blit(text, (50, 50))
+        options = ["Pikachu", "Charmander", "Bulbasaur", "Squirtle"]
+        for i, option in enumerate(options):
+            color = self.WHITE if i != selected_index else (255, 0, 0)
+            text = font.render(option, True, color)
+            self.win.blit(text, (50, 100 + i * 50))
+        pygame.display.flip()
 
 if __name__ == "__main__":
     game = Game()
