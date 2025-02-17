@@ -20,7 +20,7 @@ class Menu:
 
         self.menu_font = pygame.font.Font(font_path, 60)
         self.title_font = pygame.font.Font(font_path, 100)
-    
+
     def menu_music(self):
         pygame.mixer.music.stop()
         pygame.mixer.music.load('assets/audio/menu-theme.wav')
@@ -34,7 +34,7 @@ class Menu:
     def draw_menu(self):
         self.screen.blit(self.background, (0, 0))
         self.draw_text("FIGHTERS", self.title_font, (255, 255, 255), self.width // 2.6, self.height // 2.4)
-        
+
         for i, option in enumerate(self.menu_options):
             color = (255, 150, 203) if i == self.selected_option else (255, 255, 255)
             text = self.menu_font.render(option, True, color)
@@ -54,21 +54,26 @@ class Menu:
                     self.selected_option = (self.selected_option + 1) % len(self.menu_options)
                 elif event.key == pygame.K_RETURN:
                     if self.menu_options[self.selected_option] == 'New Game':
-                        game = Game()
-                        game.run()
-                        self.game_music()
+                        self.start_new_game()
                     elif self.menu_options[self.selected_option] == 'Load Game':
                         print("Chargement du jeu...")
                     elif self.menu_options[self.selected_option] == 'Quit':
                         return False
         return True
 
+    def start_new_game(self):
+        game = Game()
+        game.run()
+
     def run(self):
-        self.menu_music()
-        running = True
-        while running:
-            running = self.handle_input()
-            self.draw_menu()
-        
-        pygame.quit()
-        sys.exit()
+        try:
+            self.menu_music()
+            running = True
+            while running:
+                running = self.handle_input()
+                self.draw_menu()
+            return self.menu_options[self.selected_option]
+        except Exception as e:
+            print(f"Erreur dans menu.py : {e}")
+            pygame.quit()
+            sys.exit()
