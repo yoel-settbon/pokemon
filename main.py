@@ -11,7 +11,7 @@ if __name__ == "__main__":
         menu = Menu(1100, 700, "assets/image/background.png", "assets/font/upheavtt.ttf", menu_options)
         
         choice = menu.run()
-        print(f"Option sélectionnée : {choice}")  # Affiche l'option choisie
+        print(f"Option sélectionnée : {choice}")
         if choice == "New Game":
             game = Game()
             print("Création du jeu en cours...")
