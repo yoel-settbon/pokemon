@@ -14,7 +14,6 @@ if __name__ == "__main__":
         print(f"Option sélectionnée : {choice}")
         if choice == "New Game":
             game = Game()
-            print("Création du jeu en cours...")
             game.run()
     except Exception as e:
         print(f"Erreur dans main.py : {e}")

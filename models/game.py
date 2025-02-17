@@ -15,13 +15,11 @@ class Game:
         self.background = pygame.image.load("assets/image/battle.webp")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
-        # Chargement des images de Pokémon
         self.pikachu_img = pygame.image.load("assets/image/pikachu.png")
         self.charmander_img = pygame.image.load("assets/image/charmander.png")
         self.bulbasaur_img = pygame.image.load("assets/image/bulbasaur.png")
         self.squirtle_img = pygame.image.load("assets/image/squirtle.png")
 
-        # Création des objets Pokémon
         self.pikachu = Pokemon("Pikachu", 100, 50, ["Éclair", "Coup de foudre", "Tonnerre"])
         self.charmander = Pokemon("Charmander", 80, 45, ["Flamme", "Griffe", "Flammèche"])
         self.bulbasaur = Pokemon("Bulbasaur", 90, 40, ["Vampigraine", "Fouet Lianes", "Charge"])
@@ -44,7 +42,6 @@ class Game:
         text = font.render("Choisissez votre Pokémon:", True, self.WHITE)
         self.win.blit(text, (50, 50))
 
-        # Liste des images de Pokémon
         pokemon_images = [self.pikachu_img, self.charmander_img, self.bulbasaur_img, self.squirtle_img]
         for i, img in enumerate(pokemon_images):
             img = pygame.transform.scale(img, (100, 100))
@@ -70,7 +67,6 @@ class Game:
                     elif event.key == pygame.K_RIGHT:
                         selected_index = (selected_index + 1) % 4
                     elif event.key == pygame.K_RETURN:
-                        # Retourne l'objet Pokémon et non l'image
                         if selected_index == 0:
                             return self.pikachu
                         elif selected_index == 1:
@@ -130,7 +126,6 @@ class Game:
                     running = False
                 player_turn = True
 
-            # Affichage des messages et des informations sur les Pokémon
             self.win.blit(self.background, (0, 0))
             font = pygame.font.Font(None, 36)
             text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
@@ -149,4 +144,3 @@ class Game:
             self.player_pokemon = self.choose_pokemon()
         else:
             self.player_pokemon.reset_hp()
-
