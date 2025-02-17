@@ -8,4 +8,4 @@ pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(1.0)
 
 while True:
-    pass  # Garde le programme ouvert pour tester
+    pass
