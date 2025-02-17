@@ -1,6 +1,6 @@
 import pygame
 import random
-from pokemon import Pokemon 
+from models.pokemon import Pokemon 
 
 class Game:
     def __init__(self):
