@@ -38,14 +38,14 @@ class Pokemon():
         self.sprite_front = data["sprites"]["front"]
         self.sprite_back = data["sprites"]["back"]
         self.types = [type_data["name"] for type_data in data["types"]]
-        self.hp = int((data["stats"]["hp"]) / 50 * self.level)
-        self.atk = (data["stats"]["atk"]) / 50 * self.level
-        self.defense = data["stats"]["def"] / 50 * self.level
+        self.hp = int((data["stats"]["hp"]) / 10 * self.level)
+        self.atk = (data["stats"]["atk"]) / 10 * self.level
+        self.defense = data["stats"]["def"] / 10 * self.level
         self.resistances = [
             (resistance["name"], resistance["multiplier"])
             for resistance in data["resistances"]
         ]
-        self.max_hp = int((data["stats"]["hp"]) / 50 * self.level)
+        self.max_hp = int((data["stats"]["hp"]) / 10 * self.level)
         self.xp = 0  
         self.xp_to_next_level = 100  
         self.evolution = data["evolution"]["next"]
@@ -63,6 +63,52 @@ class Pokemon():
         self.xp -= self.xp_to_next_level
         self.xp_to_next_level = int(self.xp_to_next_level * 1.15)  
         print(f"{self.name} monte au niveau {self.level} !")
+        self.evolve()
+
+    def get_damage_multiplier(self, attack_type):
+        multiplier = 1
+        for resistance in self.resistances:
+            if resistance[0] == attack_type:
+                multiplier *= resistance[1]
+        return multiplier
+    
+    def evolve(self):
+        if self.evolution is None:
+            return  
+
+        for evo in self.evolution:
+            if self.level >= evo["condition"]:
+                with open('Pokemon.json', 'r', encoding='utf-8') as file:
+                    pokemon_data = json.load(file)
+                
+                evolved_pokemon_data = next(
+                    (p for p in pokemon_data["pokemons"] if p["pokedex_id"] == evo["pokedex_id"]),
+                    None
+                )
+                
+                if evolved_pokemon_data is None:
+                    print(f"Erreur : Données du Pokémon évolué {evo['name']} introuvables.")
+                    return
+               
+                self.name = evolved_pokemon_data["name"]["en"]
+                self.pokedex_id = evolved_pokemon_data["pokedex_id"]
+                self.sprite_front = evolved_pokemon_data["sprites"]["front"]
+                self.sprite_back = evolved_pokemon_data["sprites"]["back"]
+                self.types = [type_data["name"] for type_data in evolved_pokemon_data["types"]]
+                
+                self.hp = int((evolved_pokemon_data["stats"]["hp"]) / 10 * self.level)
+                self.atk = (evolved_pokemon_data["stats"]["atk"]) / 10 * self.level
+                self.defense = evolved_pokemon_data["stats"]["def"] / 10 * self.level
+                self.max_hp = self.hp  
+                
+                self.resistances = [
+                    (resistance["name"], resistance["multiplier"])
+                    for resistance in evolved_pokemon_data["resistances"]
+                ]
+                self.evolution = evolved_pokemon_data["evolution"]["next"]
+
+                print(f"{self.name} a évolué en {evo['name']} !")
+                break
 
 
 class Fight():
@@ -112,8 +158,10 @@ class Fight():
                             return False
             pygame.display.update()
 
-    def attack(self):
-        damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense) / 2))
+    def attack(self, attack_type):
+        base_damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense) / 2))
+        multiplier = self.enemy_pokemon.get_damage_multiplier(attack_type)
+        damage = int(base_damage * multiplier)
         self.enemy_pokemon.hp -= damage
         draw_text(f"{self.player_pokemon.name} attaque et inflige {damage} dégâts !", text_font, BLACK, 100, 600)
 
@@ -135,8 +183,10 @@ class Fight():
             draw_text(f"{self.player_pokemon.name} est KO !", text_font, BLACK, 100, 750)
             self.menu_between()
 
-    def enemy_attack(self):
-        damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense / 2)))
+    def enemy_attack(self, attack_type):
+        base_damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense / 2)))
+        multiplier = self.player_pokemon.get_damage_multiplier(attack_type)
+        damage = int(base_damage * multiplier)
         self.player_pokemon.hp -= damage
         draw_text(f"{self.enemy_pokemon.name} attaque et inflige {damage} dégâts !", text_font, BLACK, 100, 700)
 
@@ -177,9 +227,9 @@ class Fight():
                         self.fight_index = (self.fight_index + 1) % len(self.fight_options)
                     if event.key == pygame.K_RETURN:
                         if self.fight_index == 0:  
-                            self.attack()  
+                            self.attack(self.player_pokemon.types[0])
                             if not self.enemy_pokemon.est_ko(): 
-                                self.enemy_attack()  
+                                self.enemy_attack(self.enemy_pokemon.types[0])  
                             else:
                                 self.player_pokemon.hp = self.player_pokemon.max_hp
                                 self.enemy_pokemon = game.new_wild_pokemon()
@@ -192,7 +242,6 @@ class Fight():
                             self.menu_between()
 
             pygame.display.update()
-
 
 class Game():
     def __init__(self):
