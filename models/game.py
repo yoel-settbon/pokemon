@@ -34,6 +34,12 @@ class Game:
         self.show_player_message = True
         self.message_display_time = 0
 
+    def game_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/battle-theme.wav')
+        pygame.mixer.music.play(-1) 
+        pygame.mixer.music.set_volume(1.0)
+
     def choose_pokemon(self):
         selected_index = 0
         self.display_pokemon_choice(selected_index)
@@ -52,7 +58,7 @@ class Game:
                     self.display_pokemon_choice(selected_index)
 
     def run(self):
-
+        self.game_music()
         while True:
             running = True
             player_turn = True

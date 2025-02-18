@@ -21,6 +21,11 @@ class Menu:
         self.menu_font = pygame.font.Font(font_path, 30)
         self.title_font = pygame.font.Font(font_path, 50)
 
+    def menu_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/menu-theme.wav')
+        pygame.mixer.music.play(-1)
+
     def draw_text(self, text, font, color, x, y):
         text_surf = font.render(text, True, color)
         text_rect = text_surf.get_rect(center=(x, y))
@@ -58,6 +63,7 @@ class Menu:
         return True
 
     def run(self):
+        self.menu_music()
         running = True
         while running:
             running = self.handle_input()
