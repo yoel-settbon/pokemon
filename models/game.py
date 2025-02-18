@@ -34,11 +34,20 @@ class Game:
         self.show_player_message = True
         self.message_display_time = 0
 
+        self.game_over_img = pygame.image.load("assets/image/game-over.png")
+        self.game_over_img = pygame.transform.scale(self.game_over_img, (self.WIDTH, self.HEIGHT))
+
+    def menu(self):
+        from models.menu import Menu
+        menu = Menu(1100, 700, "assets/image/background.png", "assets/font/upheavtt.ttf", ['New Game', 'Load Game', 'Quit'])
+        menu.run()
+
     def game_music(self):
         pygame.mixer.music.stop()
         pygame.mixer.music.load('assets/audio/battle-theme.wav')
         pygame.mixer.music.play(-1) 
         pygame.mixer.music.set_volume(1.0)
+    
 
     def choose_pokemon(self):
         selected_index = 0
@@ -56,6 +65,15 @@ class Game:
                     elif event.key == pygame.K_RETURN:
                         return [self.pikachu, self.charmander, self.bulbasaur, self.squirtle][selected_index]
                     self.display_pokemon_choice(selected_index)
+
+    def game_over_sequence(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/game-over-voice.wav')
+        pygame.mixer.music.play()
+        self.win.blit(self.game_over_img, (0, 0))
+        pygame.display.flip()
+        pygame.time.delay(5000)  # Pause de 3 secondes
+
 
     def run(self):
         self.game_music()
@@ -105,6 +123,8 @@ class Game:
                     if self.player_pokemon.hp <= 0:
                         self.opponent_message += f" {self.player_pokemon.name} is KO!"
                         running = False
+                        self.game_over_sequence()
+                        return self.menu()
                     player_turn = True
 
                 self.win.blit(self.background, (0, 0))
