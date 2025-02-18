@@ -21,9 +21,9 @@ class Game:
         self.squirtle_img = pygame.image.load("assets/image/squirtle.png")
 
         self.pikachu = Pokemon("Pikachu", 100, 50, ["Éclair", "Coup de foudre", "Tonnerre"])
-        self.charmander = Pokemon("Charmander", 80, 45, ["Flamme", "Griffe", "Flammèche"])
-        self.bulbasaur = Pokemon("Bulbasaur", 90, 40, ["Vampigraine", "Fouet Lianes", "Charge"])
-        self.squirtle = Pokemon("Squirtle", 110, 35, ["Pistolet à eau", "Charge", "Bulle d'O"])
+        self.charmander = Pokemon("Charmander", 100, 45, ["Flamme", "Griffe", "Flammèche"])
+        self.bulbasaur = Pokemon("Bulbasaur", 100, 40, ["Vampigraine", "Fouet Lianes", "Charge"])
+        self.squirtle = Pokemon("Squirtle", 100, 35, ["Pistolet à eau", "Charge", "Bulle d'O"])
 
         self.player_pokemon = None
         self.opponent_pokemon = None
