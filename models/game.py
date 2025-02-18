@@ -47,7 +47,6 @@ class Game:
         pygame.mixer.music.load('assets/audio/battle-theme.wav')
         pygame.mixer.music.play(-1) 
         pygame.mixer.music.set_volume(1.0)
-    
 
     def choose_pokemon(self):
         selected_index = 0
@@ -72,7 +71,7 @@ class Game:
         pygame.mixer.music.play()
         self.win.blit(self.game_over_img, (0, 0))
         pygame.display.flip()
-        pygame.time.delay(5000)  # Pause de 3 secondes
+        pygame.time.delay(5000)
 
 
     def run(self):
@@ -165,7 +164,3 @@ class Game:
             pygame.draw.rect(self.win, color, (x, y, 100, 100), 3)
 
         pygame.display.flip()
-
-if __name__ == "__main__":
-    game = Game()
-    game.run()
