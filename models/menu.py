@@ -18,8 +18,8 @@ class Menu:
         self.background = pygame.image.load(background_image)
         self.background = pygame.transform.scale(self.background, (self.width, self.height))
 
-        self.menu_font = pygame.font.Font(font_path, 30)
-        self.title_font = pygame.font.Font(font_path, 50)
+        self.menu_font = pygame.font.Font(font_path, 60)
+        self.title_font = pygame.font.Font(font_path, 100)
 
     def menu_music(self):
         pygame.mixer.music.stop()
