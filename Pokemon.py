@@ -7,17 +7,17 @@ from pygame import *
 pygame.init()
 
 screen = pygame.display.set_mode((1250, 800))
-background_fight = pygame.image.load("images/fight_template.png")
-background_menu = pygame.image.load("images/menu_template_pokemon.jpg")
-logo = pygame.image.load("images/logo_pokemon.png")
+background_fight = pygame.image.load("assets/image/fight_template.png")
+background_menu = pygame.image.load("assets/image/menu_template_pokemon.jpg")
+logo = pygame.image.load("assets/image/logo_pokemon.png")
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
 
-text_font = pygame.font.SysFont("Arial", 30)
-title_font = pygame.font.SysFont("Arial", 60)
+text_font = pygame.font.SysFont("assets/font/Daydream.ttf", 35)
+title_font = pygame.font.SysFont("assets/font/Daydream.ttf", 60)
 
 def draw_text(text, text_font, color, x, y):
     text_surface = text_font.render(text, True, color)
