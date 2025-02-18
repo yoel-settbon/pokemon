@@ -8,7 +8,7 @@ class Pokemon:
         self.attack = attack
 
     def attack_pokemon(self, other):
-        damage = random.randint(0, self.attack)
+        damage = random.randint(0, 25)
         other.hp -= damage
         return damage
 

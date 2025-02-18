@@ -49,40 +49,13 @@ class Menu:
                     self.selected_option = (self.selected_option + 1) % len(self.menu_options)
                 elif event.key == pygame.K_RETURN:
                     if self.menu_options[self.selected_option] == "New Game":
-                        player_name = self.get_player_name()
-                        if player_name:
-                            game = Game(player_name)
-                            game.run()
+                        game = Game()
+                        game.run()
                     elif self.menu_options[self.selected_option] == "Load Game":
                         print("Loading game...")
                     elif self.menu_options[self.selected_option] == "Quit":
                         return False
         return True
-
-    def get_player_name(self):
-        player_name = ""
-        input_active = True
-        while input_active:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_BACKSPACE:
-                        player_name = player_name[:-1]
-                    elif event.key == pygame.K_RETURN:
-                        game = Game()
-                        game.run()
-                    else:
-                        player_name += event.unicode
-
-            self.screen.blit(self.background, (0, 0))
-            self.draw_text("FIGHTERS", self.title_font, (255, 255, 255), self.width // 2.6, self.height // 2.4)
-            self.draw_text("Enter Player Name:", self.menu_font, (255, 255, 255), self.width // 2.6, self.height // 1.8)
-            self.draw_text(player_name, self.menu_font, (255, 255, 255), self.width // 2.6, self.height // 1.5)
-            pygame.display.flip()
-
-        return player_name
 
     def run(self):
         running = True

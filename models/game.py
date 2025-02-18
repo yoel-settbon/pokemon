@@ -14,6 +14,11 @@ class Game:
         self.background = pygame.image.load("assets/image/battle.webp")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
+        self.pikachu_img = pygame.image.load("assets/image/pikachu.png")
+        self.charmander_img = pygame.image.load("assets/image/charmander.png")
+        self.bulbasaur_img = pygame.image.load("assets/image/bulbasaur.png")
+        self.squirtle_img = pygame.image.load("assets/image/squirtle.png")
+
         self.pikachu = Pokemon("Pikachu", 100, 20)
         self.charmander = Pokemon("Charmander", 100, 15)
         self.bulbasaur = Pokemon("Bulbasaur", 100, 18)
@@ -38,9 +43,9 @@ class Game:
                     pygame.quit()
                     exit()
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_LEFT:
                         selected_index = (selected_index - 1) % 4
-                    elif event.key == pygame.K_DOWN:
+                    elif event.key == pygame.K_RIGHT:
                         selected_index = (selected_index + 1) % 4
                     elif event.key == pygame.K_RETURN:
                         return [self.pikachu, self.charmander, self.bulbasaur, self.squirtle][selected_index]
@@ -119,16 +124,20 @@ class Game:
                 self.player_pokemon.reset_hp()
 
     def display_pokemon_choice(self, selected_index):
-
         self.win.blit(self.background, (0, 0))
         font = pygame.font.Font(None, 36)
-        text = font.render("Pick your Pokémon:", True, self.WHITE)
+        text = font.render("Choisissez votre Pokémon:", True, self.WHITE)
         self.win.blit(text, (50, 50))
-        options = ["Pikachu", "Charmander", "Bulbasaur", "Squirtle"]
-        for i, option in enumerate(options):
+
+        pokemon_images = [self.pikachu_img, self.charmander_img, self.bulbasaur_img, self.squirtle_img]
+        for i, img in enumerate(pokemon_images):
+            img = pygame.transform.scale(img, (100, 100))
+            x = 50 + i * 150
+            y = 150
             color = self.WHITE if i != selected_index else (255, 0, 0)
-            text = font.render(option, True, color)
-            self.win.blit(text, (50, 100 + i * 50))
+            self.win.blit(img, (x, y))
+            pygame.draw.rect(self.win, color, (x, y, 100, 100), 3)
+
         pygame.display.flip()
 
 if __name__ == "__main__":
