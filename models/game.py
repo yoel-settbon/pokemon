@@ -100,7 +100,7 @@ class Game:
                         if event.key == pygame.K_SPACE and player_turn:
                             damage = self.player_pokemon.attack_pokemon(self.opponent_pokemon)
                             if damage == 0:
-                                self.player_message = f"{self.player_pokemon.name}'s attack missed!"
+                                self.player_message = f"{self.player_pokemon.name}'s attack missed or tried to attack itself!"
                             else:
                                 self.player_message = f"{self.player_pokemon.name} attacks {self.opponent_pokemon.name} dealing {damage} damage!"
                             self.last_attack_time = current_time
@@ -108,6 +108,10 @@ class Game:
                             self.message_display_time = current_time + self.attack_delay
                             if self.opponent_pokemon.hp <= 0:
                                 self.player_message += f" {self.opponent_pokemon.name} is KO!"
+
+                                self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
+                                self.opponent_pokemon.reset_hp()
+                                self.player_message += f" A wild {self.opponent_pokemon.name} appeared!"
                                 running = False
                             player_turn = False
 
@@ -115,7 +119,7 @@ class Game:
                     damage = self.opponent_pokemon.attack_pokemon(self.player_pokemon)
 
                     if damage == 0:
-                        self.opponent_message = f"{self.opponent_pokemon.name}'s attack missed!"
+                        self.opponent_message = f"{self.opponent_pokemon.name}'s attack missed or tried to attack itself!"
                     else:
                         self.opponent_message = f"{self.opponent_pokemon.name} attacks {self.player_pokemon.name} dealing {damage} damage!"
 
@@ -131,8 +135,6 @@ class Game:
                     player_turn = True
 
                 self.win.blit(self.background, (0, 0))
-                
-                # Appel de la méthode pour afficher les images des Pokémon
                 self.display_pokemon_images()
 
                 font = pygame.font.Font(None, 36)
@@ -156,12 +158,13 @@ class Game:
             else:
                 self.player_pokemon.reset_hp()
 
+
+
     def display_pokemon_images(self):
-        # Affichage des images des Pokémon
+
         player_pokemon_img = pygame.transform.scale(self.get_pokemon_back(self.player_pokemon), (450, 450))
         opponent_pokemon_img = pygame.transform.scale(self.get_pokemon_image(self.opponent_pokemon), (350, 350))
 
-        # Positionner les images sur l'écran
         self.win.blit(player_pokemon_img, (150, 370))
         self.win.blit(opponent_pokemon_img, (680, 200))
     
