@@ -14,6 +14,11 @@ class Game:
         self.background = pygame.image.load("assets/image/battle.webp")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
+        self.pikachu_back_img = pygame.image.load("assets\image\pikachu_.png")
+        self.charmander_back_img = pygame.image.load("assets\image\charmander_.png")
+        self.bulbasaur_back_img = pygame.image.load("assets\image/balbasaur_.png")
+        self.squirtle_back_img = pygame.image.load("assets\image\squirtle_.png")
+
         self.pikachu_img = pygame.image.load("assets/image/pikachu.png")
         self.charmander_img = pygame.image.load("assets/image/charmander.png")
         self.bulbasaur_img = pygame.image.load("assets/image/bulbasaur.png")
@@ -73,7 +78,6 @@ class Game:
         pygame.display.flip()
         pygame.time.delay(5000)
 
-
     def run(self):
         self.game_music()
         while True:
@@ -127,6 +131,10 @@ class Game:
                     player_turn = True
 
                 self.win.blit(self.background, (0, 0))
+                
+                # Appel de la méthode pour afficher les images des Pokémon
+                self.display_pokemon_images()
+
                 font = pygame.font.Font(None, 36)
                 text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
                 self.win.blit(text, (30, 500))
@@ -147,6 +155,35 @@ class Game:
                 self.player_pokemon = self.choose_pokemon()
             else:
                 self.player_pokemon.reset_hp()
+
+    def display_pokemon_images(self):
+        # Affichage des images des Pokémon
+        player_pokemon_img = pygame.transform.scale(self.get_pokemon_back(self.player_pokemon), (450, 450))
+        opponent_pokemon_img = pygame.transform.scale(self.get_pokemon_image(self.opponent_pokemon), (350, 350))
+
+        # Positionner les images sur l'écran
+        self.win.blit(player_pokemon_img, (150, 370))
+        self.win.blit(opponent_pokemon_img, (680, 200))
+    
+    def get_pokemon_back(self, pokemon):
+        if pokemon.name == "Pikachu":
+            return self.pikachu_back_img
+        if pokemon.name == "Charmander":
+            return self.charmander_back_img
+        if pokemon.name == "Bulbasaur":
+            return self.bulbasaur_back_img
+        if pokemon.name == "Squirtle":
+            return self.squirtle_back_img
+        
+    def get_pokemon_image(self, pokemon):
+        if pokemon.name == "Pikachu":
+            return self.pikachu_img
+        elif pokemon.name == "Charmander":
+            return self.charmander_img
+        elif pokemon.name == "Bulbasaur":
+            return self.bulbasaur_img
+        elif pokemon.name == "Squirtle":
+            return self.squirtle_img
 
     def display_pokemon_choice(self, selected_index):
         self.win.blit(self.background, (0, 0))
