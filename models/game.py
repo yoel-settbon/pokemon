@@ -16,7 +16,7 @@ class Game:
 
         self.pikachu_back_img = pygame.image.load("assets\image\pikachu_.png")
         self.charmander_back_img = pygame.image.load("assets\image\charmander_.png")
-        self.bulbasaur_back_img = pygame.image.load("assets\image/balbasaur_.png")
+        self.bulbasaur_back_img = pygame.image.load("assets\image/bulbasaur_.png")
         self.squirtle_back_img = pygame.image.load("assets\image\squirtle_.png")
 
         self.pikachu_img = pygame.image.load("assets/image/pikachu.png")
@@ -41,6 +41,11 @@ class Game:
 
         self.game_over_img = pygame.image.load("assets/image/game-over.png")
         self.game_over_img = pygame.transform.scale(self.game_over_img, (self.WIDTH, self.HEIGHT))
+
+        self.attack_animation_player = False
+        self.attack_animation_opponent = False
+        self.animation_time_player = 0
+        self.animation_time_opponent = 0
 
     def menu(self):
         from models.menu import Menu
@@ -98,9 +103,12 @@ class Game:
                         exit()
                     elif event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_SPACE and player_turn:
+                            self.attack_animation_player = True
+                            self.animation_time_player = current_time + 500
+
                             damage = self.player_pokemon.attack_pokemon(self.opponent_pokemon)
                             if damage == 0:
-                                self.player_message = f"{self.player_pokemon.name}'s attack missed or tried to attack itself!"
+                                self.player_message = f"{self.player_pokemon.name}'s attack missed!"
                             else:
                                 self.player_message = f"{self.player_pokemon.name} attacks {self.opponent_pokemon.name} dealing {damage} damage!"
                             self.last_attack_time = current_time
@@ -115,11 +123,19 @@ class Game:
                                 running = False
                             player_turn = False
 
+                if self.attack_animation_player and current_time >= self.animation_time_player:
+                    self.attack_animation_player = False
+                    self.attack_animation_opponent = True
+                    self.animation_time_opponent = current_time + 500
+
+                if self.attack_animation_opponent and current_time >= self.animation_time_opponent:
+                    self.attack_animation_opponent = False
+
                 if not player_turn and self.opponent_pokemon.hp > 0 and current_time >= self.message_display_time:
                     damage = self.opponent_pokemon.attack_pokemon(self.player_pokemon)
 
                     if damage == 0:
-                        self.opponent_message = f"{self.opponent_pokemon.name}'s attack missed or tried to attack itself!"
+                        self.opponent_message = f"{self.opponent_pokemon.name}'s attack missed!"
                     else:
                         self.opponent_message = f"{self.opponent_pokemon.name} attacks {self.player_pokemon.name} dealing {damage} damage!"
 
@@ -141,7 +157,7 @@ class Game:
                 text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
                 self.win.blit(text, (30, 500))
                 text = font.render(f"{self.opponent_pokemon.name} HP: {self.opponent_pokemon.hp}", True, self.WHITE)
-                self.win.blit(text, (860, 200))
+                self.win.blit(text, (850, 200))
 
                 if self.show_player_message and current_time < self.message_display_time:
                     player_message_text = font.render(self.player_message, True, self.WHITE)
@@ -158,16 +174,20 @@ class Game:
             else:
                 self.player_pokemon.reset_hp()
 
-
-
     def display_pokemon_images(self):
+        player_offset = 0
+        opponent_offset = 0
+        if self.attack_animation_player:
+            player_offset = 20
+        if self.attack_animation_opponent:
+            opponent_offset = -20
 
         player_pokemon_img = pygame.transform.scale(self.get_pokemon_back(self.player_pokemon), (450, 450))
         opponent_pokemon_img = pygame.transform.scale(self.get_pokemon_image(self.opponent_pokemon), (350, 350))
 
-        self.win.blit(player_pokemon_img, (150, 370))
-        self.win.blit(opponent_pokemon_img, (680, 200))
-    
+        self.win.blit(player_pokemon_img, (150 + player_offset, 370))
+        self.win.blit(opponent_pokemon_img, (680 + opponent_offset, 200))
+
     def get_pokemon_back(self, pokemon):
         if pokemon.name == "Pikachu":
             return self.pikachu_back_img
