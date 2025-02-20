@@ -23,14 +23,28 @@ class Game:
         self.charmander_img = pygame.image.load("assets/image/charmander.png")
         self.bulbasaur_img = pygame.image.load("assets/image/bulbasaur.png")
         self.squirtle_img = pygame.image.load("assets/image/squirtle.png")
+        self.snorlax_img = pygame.image.load("assets\image\pokemon-face\snorlax.png")
+        self.lapras_img = pygame.image.load("assets\image\pokemon-face\lapras.png")
+        self.lugia_img = pygame.image.load("assets\image\pokemon-face\lugia.png")
+        self.dragonite_img = pygame.image.load("assets\image\pokemon-face\dragonite.png")
+        self.mew_img = pygame.image.load("assets\image\pokemon-face\mew.png")
 
         self.pikachu = Pokemon("Pikachu", 100, 20)
         self.charmander = Pokemon("Charmander", 100, 15)
         self.bulbasaur = Pokemon("Bulbasaur", 100, 18)
         self.squirtle = Pokemon("Squirtle", 100, 16)
+        self.snorlax = Pokemon("Snorlax",100,14)
+        self.lapras = Pokemon("Lapras",100, 12)
+        self.lugia = Pokemon("Lugia", 100, 10)
+        self.dragonite = Pokemon("Dragonite", 100,8)
+        self.mew = Pokemon("Mew", 100, 6)
 
         self.player_pokemon = self.choose_pokemon()
-        self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
+        self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
+        while self.opponent_pokemon == self.player_pokemon:
+            self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
         self.player_message = ""
         self.opponent_message = ""
 
@@ -89,7 +103,11 @@ class Game:
             running = True
             player_turn = True
             self.player_pokemon.reset_hp()
-            self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
+            self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
+            while self.opponent_pokemon == self.player_pokemon:
+                self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
             self.opponent_pokemon.reset_hp()
             self.player_message = ""
             self.opponent_message = ""
@@ -118,6 +136,10 @@ class Game:
                                 self.player_message += f" {self.opponent_pokemon.name} is KO!"
 
                                 self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
+
+                                while self.opponent_pokemon == self.player_pokemon:
+                                    self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
                                 self.opponent_pokemon.reset_hp()
                                 self.player_message += f" A wild {self.opponent_pokemon.name} appeared!"
                                 running = False
@@ -191,11 +213,11 @@ class Game:
     def get_pokemon_back(self, pokemon):
         if pokemon.name == "Pikachu":
             return self.pikachu_back_img
-        if pokemon.name == "Charmander":
+        elif pokemon.name == "Charmander":
             return self.charmander_back_img
-        if pokemon.name == "Bulbasaur":
+        elif pokemon.name == "Bulbasaur":
             return self.bulbasaur_back_img
-        if pokemon.name == "Squirtle":
+        elif pokemon.name == "Squirtle":
             return self.squirtle_back_img
         
     def get_pokemon_image(self, pokemon):
@@ -207,6 +229,16 @@ class Game:
             return self.bulbasaur_img
         elif pokemon.name == "Squirtle":
             return self.squirtle_img
+        elif pokemon.name == "Snorlax":
+            return self.snorlax_img
+        elif pokemon.name == "Lapras":
+            return self.lapras_img
+        elif pokemon.name == "Lugia":
+            return self.lugia_img
+        elif pokemon.name == "Dragonite":
+            return self.dragonite_img
+        elif pokemon.name == "Mew":
+            return self.mew_img
 
     def display_pokemon_choice(self, selected_index):
         self.win.blit(self.background, (0, 0))
