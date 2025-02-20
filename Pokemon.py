@@ -215,7 +215,6 @@ class Fight():
             if len(game.player_pokedex["pokemons"]) == 0:
                 game.game_over()
                 pygame.display.update()
-                pygame.quit() 
             else:
                 self.switch_pokemon()
 
@@ -228,10 +227,9 @@ class Fight():
         selected_pokemon = game.display_pokedex_menu()
         if selected_pokemon:
             selected_pokemon.update_stats()
-            
+      
             self.player_pokemon = selected_pokemon
             draw_text(f"{self.player_pokemon.name} est envoyé au combat !", text_font, BLACK, 100, 600)
-
 
     def fight(self):
         self.fight_options = ["Attack", "Run", "Switch Pokemon"]
@@ -351,13 +349,10 @@ class Game():
         self.save_player_pokedex()
 
     def remove_pokemon_from_pokedex(self, pokemon):
-        self.player_pokemon = None
-        self.enemy_pokemon = None
-
-        for pokedex_pokemon in game.player_pokedex["pokemons"]:
+        for pokedex_pokemon in self.player_pokedex["pokemons"]:
             if pokedex_pokemon["pokedex_id"] == pokemon.pokedex_id:
-                game.player_pokedex["pokemons"].remove(pokedex_pokemon)
-                game.save_player_pokedex()  
+                self.player_pokedex["pokemons"].remove(pokedex_pokemon)
+                self.save_player_pokedex()
                 break
 
 
@@ -380,9 +375,16 @@ class Game():
             draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 30, 300)
 
     def game_over(self):
-        screen.blit(background_menu,(0,0))
-        draw_text("GAME OVER !", text_font,BLACK, 500, 500)
+        screen.blit(background_menu, (0, 0))
+        draw_text("GAME OVER !", title_font, BLACK, 500, 400)
+        draw_text("Appuyez sur une touche pour quitter...", text_font, BLACK, 400, 500)
         pygame.display.update()
+        waiting = True
+        while waiting:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
+                    waiting = False
+        pygame.quit()
     
     def main_game(self):
         run = True
@@ -444,13 +446,9 @@ class Game():
                         selected_pokemon_data = self.player_pokedex["pokemons"][pokedex_index]
                         selected_pokemon = Pokemon(selected_pokemon_data)
                         
-                        selected_pokemon.level = selected_pokemon_data.get("level", 1)
-                        selected_pokemon.xp = selected_pokemon_data.get("xp", 0)
-                        selected_pokemon.xp_to_next_level = selected_pokemon_data.get("xp_to_next_level", 100)
-                        
                         selected_pokemon.update_stats()
+                        
                         return selected_pokemon
-                    
                     elif event.key == pygame.K_ESCAPE:
                         return None  
 
