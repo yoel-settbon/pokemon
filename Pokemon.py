@@ -38,17 +38,30 @@ class Pokemon():
         self.sprite_front = data["sprites"]["front"]
         self.sprite_back = data["sprites"]["back"]
         self.types = [type_data["name"] for type_data in data["types"]]
-        self.hp = int((data["stats"]["hp"]) / 10 * self.level)
-        self.atk = (data["stats"]["atk"]) / 10 * self.level
-        self.defense = data["stats"]["def"] / 10 * self.level
+
+        self.base_hp = data["stats"]["hp"]
+        self.base_atk = data["stats"]["atk"]
+        self.base_def = data["stats"]["def"]
+
+        self.update_stats()
+
+        self.hp = int((self.base_hp / 10) * self.level)
+        self.atk = (self.base_atk / 10) * self.level
+        self.defense = (self.base_def / 10) * self.level
         self.resistances = [
             (resistance["name"], resistance["multiplier"])
             for resistance in data["resistances"]
         ]
-        self.max_hp = int((data["stats"]["hp"]) / 10 * self.level)
+        self.max_hp = (self.base_hp) / 10 * self.level
         self.xp = 0  
         self.xp_to_next_level = 100  
         self.evolution = data["evolution"]["next"]
+
+    def update_stats(self):
+        self.hp = int((2 * self.base_hp * self.level) / 100 + self.level + 10)
+        self.atk = int((2 * self.base_atk * self.level) / 100 + 5)
+        self.defense = int((2 * self.base_def * self.level) / 100 + 5)
+        self.max_hp = self.hp
 
     def est_ko(self):
         return self.hp <= 0
@@ -57,12 +70,16 @@ class Pokemon():
         self.xp += xp_gagnee
         while self.xp >= self.xp_to_next_level:
             self.gain_lvl()
+        
+        game.update_pokedex(self)
 
     def gain_lvl(self):
         self.level += 1
         self.xp -= self.xp_to_next_level
         self.xp_to_next_level = int(self.xp_to_next_level * 1.15)  
-        print(f"{self.name} monte au niveau {self.level} !")
+    
+        self.update_stats()
+ 
         self.evolve()
 
     def get_damage_multiplier(self, attack_type):
@@ -87,19 +104,17 @@ class Pokemon():
                 )
                 
                 if evolved_pokemon_data is None:
-                    print(f"Erreur : Données du Pokémon évolué {evo['name']} introuvables.")
                     return
-               
+            
                 self.name = evolved_pokemon_data["name"]["en"]
                 self.pokedex_id = evolved_pokemon_data["pokedex_id"]
                 self.sprite_front = evolved_pokemon_data["sprites"]["front"]
                 self.sprite_back = evolved_pokemon_data["sprites"]["back"]
                 self.types = [type_data["name"] for type_data in evolved_pokemon_data["types"]]
                 
-                self.hp = int((evolved_pokemon_data["stats"]["hp"]) / 10 * self.level)
-                self.atk = (evolved_pokemon_data["stats"]["atk"]) / 10 * self.level
-                self.defense = evolved_pokemon_data["stats"]["def"] / 10 * self.level
-                self.max_hp = self.hp  
+                self.base_hp = evolved_pokemon_data["stats"]["hp"]
+                self.base_atk = evolved_pokemon_data["stats"]["atk"]
+                self.base_def = evolved_pokemon_data["stats"]["def"]
                 
                 self.resistances = [
                     (resistance["name"], resistance["multiplier"])
@@ -107,9 +122,10 @@ class Pokemon():
                 ]
                 self.evolution = evolved_pokemon_data["evolution"]["next"]
 
+                self.update_stats()
+
                 print(f"{self.name} a évolué en {evo['name']} !")
                 break
-
 
 class Fight():
     def __init__(self, player_pokemon, enemy_pokemon):
@@ -152,14 +168,14 @@ class Fight():
                         if self.choose_index == 0:
                             self.fight()
                         if self.choose_index == 1:
-                            self.fight()
+                            game.display_pokedex_menu()
                         if self.choose_index == 2:
                             game.save_player_pokedex()
                             return False
             pygame.display.update()
 
     def attack(self, attack_type):
-        base_damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense) / 2))
+        base_damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense * 0.25)))
         multiplier = self.enemy_pokemon.get_damage_multiplier(attack_type)
         damage = int(base_damage * multiplier)
         self.enemy_pokemon.hp -= damage
@@ -184,21 +200,39 @@ class Fight():
             self.menu_between()
 
     def enemy_attack(self, attack_type):
-        base_damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense / 2)))
+        base_damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense * 0.25)))
         multiplier = self.player_pokemon.get_damage_multiplier(attack_type)
         damage = int(base_damage * multiplier)
         self.player_pokemon.hp -= damage
+
         draw_text(f"{self.enemy_pokemon.name} attaque et inflige {damage} dégâts !", text_font, BLACK, 100, 700)
 
         if self.player_pokemon.hp <= 0:
             draw_text(f"{self.player_pokemon.name} est KO !", text_font, BLACK, 100, 750)
-            self.menu_between()
+
+            game.remove_pokemon_from_pokedex(self.player_pokemon)
+
+            if len(game.player_pokedex["pokemons"]) == 0:
+                game.game_over()
+                pygame.display.update()
+                pygame.quit() 
+            else:
+                self.switch_pokemon()
 
     def calculate_xp_gain(self):
         base_xp = 50 
         xp_gained = base_xp * (self.enemy_pokemon.level/2)  
         return max(10, xp_gained)  
     
+    def switch_pokemon(self):
+        selected_pokemon = game.display_pokedex_menu()
+        if selected_pokemon:
+            selected_pokemon.update_stats()
+            
+            self.player_pokemon = selected_pokemon
+            draw_text(f"{self.player_pokemon.name} est envoyé au combat !", text_font, BLACK, 100, 600)
+
+
     def fight(self):
         self.fight_options = ["Attack", "Run", "Switch Pokemon"]
         self.fight_index = 0
@@ -229,7 +263,7 @@ class Fight():
                         if self.fight_index == 0:  
                             self.attack(self.player_pokemon.types[0])
                             if not self.enemy_pokemon.est_ko(): 
-                                self.enemy_attack(self.enemy_pokemon.types[0])  
+                                self.enemy_attack(self.enemy_pokemon.types[0]) 
                             else:
                                 self.player_pokemon.hp = self.player_pokemon.max_hp
                                 self.enemy_pokemon = game.new_wild_pokemon()
@@ -239,9 +273,10 @@ class Fight():
                             self.enemy_pokemon = game.new_wild_pokemon()
                             self.menu_between()
                         elif self.fight_index == 2: 
-                            self.menu_between()
+                            self.switch_pokemon()
 
             pygame.display.update()
+
 
 class Game():
     def __init__(self):
@@ -260,6 +295,19 @@ class Game():
         with open("Pokedex.json", "w", encoding="utf-8") as file:
             json.dump(self.player_pokedex, file, ensure_ascii=False, indent=4)
 
+    def update_pokedex(self, pokemon):
+        for pokedex_pokemon in self.player_pokedex["pokemons"]:
+            if pokedex_pokemon["pokedex_id"] == pokemon.pokedex_id:
+                pokedex_pokemon["level"] = pokemon.level
+                pokedex_pokemon["xp"] = pokemon.xp
+                pokedex_pokemon["xp_to_next_level"] = pokemon.xp_to_next_level
+                pokedex_pokemon["stats"]["hp"] = pokemon.max_hp
+                pokedex_pokemon["stats"]["atk"] = pokemon.atk
+                pokedex_pokemon["stats"]["def"] = pokemon.defense
+                break
+        self.save_player_pokedex()
+
+
     def load_starters(self):
         with open("Pokemon.json", "r", encoding="utf-8") as file:
             data = json.load(file)
@@ -272,22 +320,51 @@ class Game():
         return starters_data
 
     def add_pokemon_to_pokedex(self, pokemon):
-    
-        self.player_pokedex["pokemons"].append({
-            "pokedex_id": pokemon.pokedex_id,
-            "name": {"en": pokemon.name},
-            "sprites": {"front": pokemon.sprite_front, "back": pokemon.sprite_back},
-            "types": [{"name": type_name} for type_name in pokemon.types],
-            "stats": {"hp": pokemon.max_hp, "atk": pokemon.atk, "def": pokemon.defense},
-            "resistances": [{"name": name, "multiplier": multiplier} for name, multiplier in pokemon.resistances],
-            "evolution": {"pre": None, "next": None}  
-        })
+        existing_pokemon = None
+        for pokedex_pokemon in self.player_pokedex["pokemons"]:
+            if pokedex_pokemon["pokedex_id"] == pokemon.pokedex_id:
+                existing_pokemon = pokedex_pokemon
+                break
+
+        if existing_pokemon:
+            if pokemon.level > existing_pokemon.get("level", 1):
+                existing_pokemon["level"] = pokemon.level
+                existing_pokemon["xp"] = pokemon.xp
+                existing_pokemon["xp_to_next_level"] = pokemon.xp_to_next_level
+                existing_pokemon["stats"]["hp"] = pokemon.max_hp
+                existing_pokemon["stats"]["atk"] = pokemon.atk
+                existing_pokemon["stats"]["def"] = pokemon.defense
+        else:
+            self.player_pokedex["pokemons"].append({
+                "pokedex_id": pokemon.pokedex_id,
+                "name": {"en": pokemon.name},
+                "sprites": {"front": pokemon.sprite_front, "back": pokemon.sprite_back},
+                "types": [{"name": type_name} for type_name in pokemon.types],
+                "stats": {"hp": pokemon.max_hp, "atk": pokemon.atk, "def": pokemon.defense},
+                "resistances": [{"name": name, "multiplier": multiplier} for name, multiplier in pokemon.resistances],
+                "evolution": {"pre": None, "next": None},
+                "level": pokemon.level,
+                "xp": pokemon.xp,
+                "xp_to_next_level": pokemon.xp_to_next_level
+            })
+
         self.save_player_pokedex()
+
+    def remove_pokemon_from_pokedex(self, pokemon):
+        self.player_pokemon = None
+        self.enemy_pokemon = None
+
+        for pokedex_pokemon in game.player_pokedex["pokemons"]:
+            if pokedex_pokemon["pokedex_id"] == pokemon.pokedex_id:
+                game.player_pokedex["pokemons"].remove(pokedex_pokemon)
+                game.save_player_pokedex()  
+                break
+
 
     def new_wild_pokemon(self):
         enemy_data = random.choice(data["pokemons"])
         enemy_pokemon = Pokemon(enemy_data)
-        enemy_pokemon.level = max(1, self.player_pokemon.level - random.randint(0, 5))
+        enemy_pokemon.level = max( self.player_pokemon.level - random.randint(0, 5), 1)
         return enemy_pokemon
 
     def starter_selection(self):
@@ -301,6 +378,11 @@ class Game():
             pygame.draw.rect(screen, color, (x_position - 5, 300 - 5, 210, 210))
             screen.blit(pygame.image.load(starter["sprites"]["front"]), (x_position, 350))
             draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 30, 300)
+
+    def game_over(self):
+        screen.blit(background_menu,(0,0))
+        draw_text("GAME OVER !", text_font,BLACK, 500, 500)
+        pygame.display.update()
     
     def main_game(self):
         run = True
@@ -332,6 +414,46 @@ class Game():
                         menu()
 
             self.starter_selection()
+            pygame.display.update()
+
+    def display_pokedex_menu(self):
+        run = True
+        pokedex_index = 0  
+
+        while run:
+            screen.blit(background_menu, (0, 0))
+            draw_text("Pokedex - Sélectionnez un Pokémon", title_font, BLACK, 200, 50)
+
+            for i, pokemon_data in enumerate(self.player_pokedex["pokemons"]):
+                y_position = 150 + i * 100
+                color = YELLOW if i == pokedex_index else BLUE
+                pygame.draw.rect(screen, YELLOW, (100, y_position - 10, 1050, 90))
+                pygame.draw.rect(screen, color, (105, y_position - 5, 1040, 80))
+                screen.blit(pygame.image.load(pokemon_data["sprites"]["front"]), (120, y_position))
+                draw_text(f"{pokemon_data['name']['en']} - Nv. {pokemon_data.get('level', 1)}", text_font, BLACK, 200, y_position + 20)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_DOWN:
+                        pokedex_index = (pokedex_index + 1) % len(self.player_pokedex["pokemons"])
+                    elif event.key == pygame.K_UP:
+                        pokedex_index = (pokedex_index - 1) % len(self.player_pokedex["pokemons"])
+                    elif event.key == pygame.K_RETURN:
+                        selected_pokemon_data = self.player_pokedex["pokemons"][pokedex_index]
+                        selected_pokemon = Pokemon(selected_pokemon_data)
+                        
+                        selected_pokemon.level = selected_pokemon_data.get("level", 1)
+                        selected_pokemon.xp = selected_pokemon_data.get("xp", 0)
+                        selected_pokemon.xp_to_next_level = selected_pokemon_data.get("xp_to_next_level", 100)
+                        
+                        selected_pokemon.update_stats()
+                        return selected_pokemon
+                    
+                    elif event.key == pygame.K_ESCAPE:
+                        return None  
+
             pygame.display.update()
 
 def menu():

@@ -1416,7 +1416,7 @@
             },
             "sprites": {
                 "front": "images/pokemons/pokemon-face/pikachu.png",
-                "back" : "images/pokemons/pokemon-back/pikachu.png"
+                "back" : "images/pokemons/pokemon-back/picachu.png"
             },
             "types": [
                 {
