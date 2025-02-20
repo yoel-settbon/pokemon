@@ -1,26 +1,32 @@
 import json
+import random
+from models.pokemon import Pokemon
 
-class LoadGame:
-    def __init__(self, file_path):
-        self.file_path = file_path
-        self.data = {}
+class PokemonLoader:
+    def __init__(self, json_file):
+        self.json_file = json_file
+        self.pokemons_data = self.load_pokemon_data()
 
-    def load(self):
-        try:
-            with open(self.file_path, 'r') as file:
-                self.data = json.load(file)
-        except FileNotFoundError:
-            self.data = {}
+    def load_pokemon_data(self):
+        with open(self.json_file, 'r') as file:
+            data = json.load(file)
+        return data["pokemons"]
 
-    def save(self, player_name, player_pokemon, encountered_pokemons, defeated_pokemons):
-        self.data = {
-            'player_name': player_name,
-            'player_pokemon': player_pokemon.name,
-            'encountered_pokemons': [pokemon.name for pokemon in encountered_pokemons],
-            'defeated_pokemons': [pokemon.name for pokemon in defeated_pokemons]
-        }
-        with open(self.file_path, 'w') as file:
-            json.dump(self.data, file)
+    def get_random_pokemon(self):
+        random_pokemon_data = random.choice(self.pokemons_data)
 
-    def get_data(self):
-        return self.data
+        name = random_pokemon_data["name"]["en"]
+        sprite_face = random_pokemon_data["sprites"]["face"]
+        sprite_back = random_pokemon_data["sprites"]["back"]
+        types = [t["name"] for t in random_pokemon_data["types"]]
+        stats = random_pokemon_data["stats"]
+        
+        pokemon = Pokemon(
+            name = name,
+            hp = ["hp"],
+            attack=stats["atk"],
+            sprite_back=sprite_back
+        )
+        pokemon.types = types
+
+        return pokemon

@@ -15,6 +15,7 @@ class Pokemon:
         self.max_level = 100
 
     def gain_experience(self, points):
+        self.message = ""
         self.experience += points
         while self.experience >= self.experience_to_next_level:
             self.level_up()

@@ -1,3 +1,4 @@
+import json
 import pygame
 import random
 from models.pokemon import Pokemon
@@ -13,6 +14,8 @@ class Game:
         self.BLACK = (0, 0, 0)
         self.background = pygame.image.load("assets/image/battle.webp")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
+        self.background2 = pygame.image.load("assets\image/background.png")
+        self.background2 = pygame.transform.scale(self.background2, (self.WIDTH, self.HEIGHT))
 
         self.pikachu_back_img = pygame.image.load("assets\image\pikachu_.png")
         self.charmander_back_img = pygame.image.load("assets\image\charmander_.png")
@@ -39,8 +42,12 @@ class Game:
         self.dragonite = Pokemon("Dragonite", 100,8, "assets\image\pokemon-face\dragonite.png")
         self.mew = Pokemon("Mew", 100, 6, "assets\image\pokemon-face\mew.png")
 
+        self.player_name = self.get_player_name()
         self.player_pokemon = self.choose_pokemon()
         self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
+
+        self.pokemon_encountered = [self.opponent_pokemon.name]
+        self.pokemon_defeated = []
 
         while self.opponent_pokemon == self.player_pokemon:
             self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
@@ -60,7 +67,6 @@ class Game:
         self.attack_animation_opponent = False
         self.animation_time_player = 0
         self.animation_time_opponent = 0
-
     def menu(self):
         from models.menu import Menu
         menu = Menu(1100, 700, "assets/image/background.png", "assets/font/upheavtt.ttf", ['New Game', 'Load Game', 'Quit'])
@@ -71,6 +77,37 @@ class Game:
         pygame.mixer.music.load('assets/audio/battle-theme.wav')
         pygame.mixer.music.play(-1) 
         pygame.mixer.music.set_volume(1.0)
+
+    def get_player_name(self):
+        font = pygame.font.Font("assets/font\Daydream.ttf", 36)
+        name = ""
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_BACKSPACE:
+                        name = name[:-1]
+                    elif event.key == pygame.K_RETURN:
+                        return name
+                    else:
+                        name += event.unicode
+            self.win.blit(self.background2, (0, 0))
+            text = font.render(f"Entrez votre nom: {name}", True, self.WHITE)
+            self.win.blit(text, (100, 350))
+            pygame.display.flip()
+
+    def save_game_data(self):
+        game_data = {
+            "player_name": self.player_name,
+            "chosen_pokemon": self.player_pokemon.name,
+            "pokemon_encountered": self.pokemon_encountered,
+            "pokemon_defeated": self.pokemon_defeated
+        }
+        
+        with open("data/pokedex.json", "w") as file:
+            json.dump(game_data, file, indent=4)
 
     def choose_pokemon(self):
         selected_index = 0
@@ -135,6 +172,7 @@ class Game:
                             if self.opponent_pokemon.hp <= 0:
                                 self.player_message += f" {self.opponent_pokemon.name} is KO!"
                                 self.player_pokemon.gain_experience(15)
+                                self.pokemon_defeated.append(self.opponent_pokemon.name)
 
                                 self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
 
@@ -142,9 +180,12 @@ class Game:
                                     self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
 
                                 self.opponent_pokemon.reset_hp()
+                                self.pokemon_encountered.append(self.opponent_pokemon.name)
                                 self.player_message += f" A wild {self.opponent_pokemon.name} appeared!"
                                 running = False
                             player_turn = False
+
+                self.save_game_data()
 
                 if self.attack_animation_player and current_time >= self.animation_time_player:
                     self.attack_animation_player = False
@@ -196,6 +237,7 @@ class Game:
                 self.player_pokemon = self.choose_pokemon()
             else:
                 self.player_pokemon.reset_hp()
+
 
     def display_pokemon_images(self):
         player_offset = 0

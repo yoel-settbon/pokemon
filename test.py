@@ -1,26 +1,11 @@
-        self.pikachu_back_img = pygame.image.load("assets\image\pikachu_.png")
-        self.charmander_back_img = pygame.image.load("assets\image\charmander_.png")
-        self.bulbasaur_back_img = pygame.image.load("assets\image/bulbasaur_.png")
-        self.squirtle_back_img = pygame.image.load("assets\image\squirtle_.png")
 
-        self.pikachu_img = pygame.image.load("assets/image/pikachu.png")
-        self.charmander_img = pygame.image.load("assets/image/charmander.png")
-        self.bulbasaur_img = pygame.image.load("assets/image/bulbasaur.png")
-        self.squirtle_img = pygame.image.load("assets/image/squirtle.png")
-        self.snorlax_img = pygame.image.load("assets\image\pokemon-face\snorlax.png")
-        self.lapras_img = pygame.image.load("assets\image\pokemon-face\lapras.png")
-        self.lugia_img = pygame.image.load("assets\image\pokemon-face\lugia.png")
-        self.dragonite_img = pygame.image.load("assets\image\pokemon-face\dragonite.png")
-        self.mew_img = pygame.image.load("assets\image\pokemon-face\mew.png")
+def menu(self):
+        from models.menu import Menu
+        menu = Menu(1100, 700, "assets/image/background.png", "assets/font/upheavtt.ttf", ['New Game', 'Load Game', 'Quit'])
+        menu.run()
 
-        self.pikachu = Pokemon("Pikachu", 100, 20, "assets\image\pikachu_.png")
-        self.charmander = Pokemon("Charmander", 100, 15, "assets\image\charmander_.png")
-        self.bulbasaur = Pokemon("Bulbasaur", 100, 18, "assets\image/bulbasaur_.png")
-        self.squirtle = Pokemon("Squirtle", 100, 16, "assets/image/squirtle.png")
-        self.snorlax = Pokemon("Snorlax",100,14, "assets\image\pokemon-face\snorlax.png")
-        self.lapras = Pokemon("Lapras",100, 12,"assets\image\pokemon-face\lapras.png")
-        self.lugia = Pokemon("Lugia", 100, 10, "assets\image\pokemon-face\lugia.png")
-        self.dragonite = Pokemon("Dragonite", 100,8, "assets\image\pokemon-face\dragonite.png")
-        self.mew = Pokemon("Mew", 100, 6, "assets\image\pokemon-face\mew.png")
-
-[self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew]
+    def game_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/battle-theme.wav')
+        pygame.mixer.music.play(-1) 
+        pygame.mixer.music.set_volume(1.0)
