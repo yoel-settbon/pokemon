@@ -29,15 +29,15 @@ class Game:
         self.dragonite_img = pygame.image.load("assets\image\pokemon-face\dragonite.png")
         self.mew_img = pygame.image.load("assets\image\pokemon-face\mew.png")
 
-        self.pikachu = Pokemon("Pikachu", 100, 20)
-        self.charmander = Pokemon("Charmander", 100, 15)
-        self.bulbasaur = Pokemon("Bulbasaur", 100, 18)
-        self.squirtle = Pokemon("Squirtle", 100, 16)
-        self.snorlax = Pokemon("Snorlax",100,14)
-        self.lapras = Pokemon("Lapras",100, 12)
-        self.lugia = Pokemon("Lugia", 100, 10)
-        self.dragonite = Pokemon("Dragonite", 100,8)
-        self.mew = Pokemon("Mew", 100, 6)
+        self.pikachu = Pokemon("Pikachu", 100, 20, "assets\image\pikachu_.png")
+        self.charmander = Pokemon("Charmander", 100, 15, "assets\image\charmander_.png")
+        self.bulbasaur = Pokemon("Bulbasaur", 100, 18, "assets\image/bulbasaur_.png")
+        self.squirtle = Pokemon("Squirtle", 100, 16, "assets/image/squirtle.png")
+        self.snorlax = Pokemon("Snorlax",100,14, "assets\image\pokemon-face\snorlax.png")
+        self.lapras = Pokemon("Lapras",100, 12,"assets\image\pokemon-face\lapras.png")
+        self.lugia = Pokemon("Lugia", 100, 10, "assets\image\pokemon-face\lugia.png")
+        self.dragonite = Pokemon("Dragonite", 100,8, "assets\image\pokemon-face\dragonite.png")
+        self.mew = Pokemon("Mew", 100, 6, "assets\image\pokemon-face\mew.png")
 
         self.player_pokemon = self.choose_pokemon()
         self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle, self.snorlax, self.lapras, self.lugia, self.dragonite, self.mew])
@@ -134,6 +134,7 @@ class Game:
                             self.message_display_time = current_time + self.attack_delay
                             if self.opponent_pokemon.hp <= 0:
                                 self.player_message += f" {self.opponent_pokemon.name} is KO!"
+                                self.player_pokemon.gain_experience(15)
 
                                 self.opponent_pokemon = random.choice([self.pikachu, self.charmander, self.bulbasaur, self.squirtle])
 
@@ -176,18 +177,18 @@ class Game:
                 self.display_pokemon_images()
 
                 font = pygame.font.Font(None, 36)
-                text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp}", True, self.WHITE)
-                self.win.blit(text, (30, 500))
-                text = font.render(f"{self.opponent_pokemon.name} HP: {self.opponent_pokemon.hp}", True, self.WHITE)
-                self.win.blit(text, (850, 200))
+                text = font.render(f"{self.player_pokemon.name} HP: {self.player_pokemon.hp} Level: {self.player_pokemon.level}", True, self.WHITE)
+                self.win.blit(text, (30, 450))
+                text = font.render(f"{self.opponent_pokemon.name} HP: {self.opponent_pokemon.hp} Level: {self.opponent_pokemon.level}", True, self.WHITE)
+                self.win.blit(text, (790, 150))
 
                 if self.show_player_message and current_time < self.message_display_time:
                     player_message_text = font.render(self.player_message, True, self.WHITE)
-                    self.win.blit(player_message_text, (30, 450))
+                    self.win.blit(player_message_text, (30, 400))
 
                 if not self.show_player_message and current_time < self.message_display_time:
                     opponent_message_text = font.render(self.opponent_message, True, self.WHITE)
-                    self.win.blit(opponent_message_text, (30, 200))
+                    self.win.blit(opponent_message_text, (30, 150))
 
                 pygame.display.flip()
 
