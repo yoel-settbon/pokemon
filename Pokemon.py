@@ -146,12 +146,12 @@ class Fight():
         self.choose = ["Fight","Pokedex","Save & Quit"] 
         self.choose_index = 0
         screen.blit(background_menu, (0, 0))
-        draw_text("Fight", text_font, BLACK, 100, 450)
-        draw_text("Pokedex", text_font, BLACK, 300, 450)
-        draw_text("Save & Quit", text_font, BLACK, 500, 450)
+        draw_text("Fight", text_font, BLACK, 100, 200)
+        draw_text("Pokedex", text_font, BLACK, 300, 200)
+        draw_text("Save & Quit", text_font, BLACK, 500, 200)
         while True : 
             for i, choice in enumerate(self.choose):
-                x_position = 100 + i * 200
+                x_position = 100 + i * 100
                 x_position2 = 105 + i * 200
                 color = YELLOW if i == self.choose_index else BLUE
                 pygame.draw.rect(screen, YELLOW, (x_position, 20, 410, 160))
