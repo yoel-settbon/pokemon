@@ -411,9 +411,14 @@ class Game():
             draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 20, 300)
 
     def game_over(self):
-        screen.blit(background_menu, (0, 0))
-        draw_text("GAME OVER !", title_font, BLACK, 500, 400)
+        game_over_image = pygame.image.load('assets/images/game-over.png')
+        game_over_image = pygame.transform.scale(game_over_image, (1250, 800))
+        screen.blit(game_over_image, (0, 0))
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/game-over-voice.wav')
         pygame.display.update()
+        pygame.mixer.music.play()
+        pygame.time.delay(5000)
         
     def save_game(self):
         save_data = {
