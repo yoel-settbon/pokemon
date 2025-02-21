@@ -1,11 +1,11 @@
 import pygame
 import random
-import time
 import json
 from pygame import *
+import time
+
 
 pygame.init()
-pygame.mixer.init()
 
 screen = pygame.display.set_mode((1250, 800))
 background_fight = pygame.image.load("images/fight_template.png")
@@ -133,21 +133,19 @@ class Fight():
         self.player_pokemon = player_pokemon
         self.enemy_pokemon = enemy_pokemon
         self.run = True
-    
-    def game_music(self):
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load('assets/audio/battle-theme.wav')
-        pygame.mixer.music.play(-1)
-        pygame.mixer.music.set_volume(1.0)
 
     def display_pokemon(self):
         player_sprite = pygame.image.load(self.player_pokemon.sprite_back)
         screen.blit(player_sprite, (100, 500))
-        draw_text(f"{self.player_pokemon.name} - Nv. {self.player_pokemon.level} - {self.player_pokemon.hp} HP", text_font, BLACK, 100, 450)
+        draw_text(f"{self.player_pokemon.name} - Nv. {self.player_pokemon.level}", text_font, BLACK, 100, 500)
 
         enemy_sprite = pygame.image.load(self.enemy_pokemon.sprite_front)
         screen.blit(enemy_sprite, (800, 100))
-        draw_text(f"{self.enemy_pokemon.name} - Nv. {self.enemy_pokemon.level} - {self.enemy_pokemon.hp} HP", text_font, BLACK, 800, 50)
+        draw_text(f"{self.enemy_pokemon.name} - Nv. {self.enemy_pokemon.level}", text_font, BLACK, 800, 50)
+
+        self.draw_health_bar(self.player_pokemon, 100, 480) 
+        self.draw_health_bar(self.enemy_pokemon, 800, 180) 
+
 
     def menu_between(self):
         self.choose = ["Fight","Pokedex","Save & Quit"] 
@@ -177,14 +175,15 @@ class Fight():
                         if self.choose_index == 1:
                             game.display_pokedex_menu()
                         if self.choose_index == 2:
-                            game.save_player_pokedex()
-                            return False
+                            game.save_game()
+                            menu()
             pygame.display.update()
 
     def attack(self, attack_type):
         base_damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense * 0.25)))
         multiplier = self.enemy_pokemon.get_damage_multiplier(attack_type)
         damage = int(base_damage * multiplier)
+        damage = max(1, damage)  
         self.enemy_pokemon.hp -= damage
         draw_text(f"{self.player_pokemon.name} attaque et inflige {damage} dégâts !", text_font, BLACK, 100, 600)
 
@@ -207,9 +206,10 @@ class Fight():
             self.menu_between()
 
     def enemy_attack(self, attack_type):
-        base_damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense * 0.25)))
+        base_damage = int(max(0, self.enemy_pokemon.atk - (self.player_pokemon.defense * 0.5)))
         multiplier = self.player_pokemon.get_damage_multiplier(attack_type)
         damage = int(base_damage * multiplier)
+        damage = max (1, damage)
         self.player_pokemon.hp -= damage
 
         draw_text(f"{self.enemy_pokemon.name} attaque et inflige {damage} dégâts !", text_font, BLACK, 100, 700)
@@ -221,6 +221,8 @@ class Fight():
 
             if len(game.player_pokedex["pokemons"]) == 0:
                 game.game_over()
+                time.sleep(3)
+                menu()
                 pygame.display.update()
             else:
                 self.switch_pokemon()
@@ -238,8 +240,18 @@ class Fight():
             self.player_pokemon = selected_pokemon
             draw_text(f"{self.player_pokemon.name} est envoyé au combat !", text_font, BLACK, 100, 600)
 
+    def draw_health_bar(self, pokemon, x, y):
+        pygame.draw.rect(screen, (169, 169, 169), (x, y, 200, 20))
+        
+        health_percentage = pokemon.hp / pokemon.max_hp
+        health_width = 200 * health_percentage
+        
+        health_color = (0, 255, 0) if health_percentage > 0.5 else (255, 0, 0)
+        pygame.draw.rect(screen, health_color, (x, y, health_width, 20))
+        
+        draw_text(f"{pokemon.hp}/{pokemon.max_hp}", text_font, (255, 255, 255), x + 5, y - 25)
+
     def fight(self):
-        self.game_music()
         self.fight_options = ["Attack", "Run", "Switch Pokemon"]
         self.fight_index = 0
         while self.run:
@@ -313,6 +325,12 @@ class Game():
                 break
         self.save_player_pokedex()
 
+    def reset_pokedex(self):
+        self.player_pokedex = {"pokemons": []}  
+        with open("Pokedex.json", "w", encoding="utf-8") as file:
+            json.dump(self.player_pokedex, file, ensure_ascii=False, indent=4)
+        print("Pokédex réinitialisé pour une nouvelle partie.")
+
 
     def load_starters(self):
         with open("Pokemon.json", "r", encoding="utf-8") as file:
@@ -385,15 +403,62 @@ class Game():
     def game_over(self):
         screen.blit(background_menu, (0, 0))
         draw_text("GAME OVER !", title_font, BLACK, 500, 400)
-        draw_text("Appuyez sur une touche pour quitter...", text_font, BLACK, 400, 500)
         pygame.display.update()
-        waiting = True
-        while waiting:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
-                    waiting = False
-        pygame.quit()
-    
+        
+    def save_game(self):
+        save_data = {
+            "player_pokedex": self.player_pokedex,
+            "current_pokemon": {
+                "pokedex_id": self.player_pokemon.pokedex_id if self.player_pokemon else None,
+                "name": self.player_pokemon.name if self.player_pokemon else None,
+                "level": self.player_pokemon.level if self.player_pokemon else None,
+                "xp": self.player_pokemon.xp if self.player_pokemon else None,
+                "xp_to_next_level": self.player_pokemon.xp_to_next_level if self.player_pokemon else None,
+                "hp": self.player_pokemon.hp if self.player_pokemon else None,
+                "max_hp": self.player_pokemon.max_hp if self.player_pokemon else None,
+                "atk": self.player_pokemon.atk if self.player_pokemon else None,
+                "defense": self.player_pokemon.defense if self.player_pokemon else None,
+            }
+        }
+
+        with open("Pokedex.json", "w", encoding="utf-8") as file:
+            json.dump(save_data, file, ensure_ascii=False, indent=4)
+
+   
+        
+
+
+    def load_game(self):
+        try:
+            with open("Pokedex.json", "r", encoding="utf-8") as file:
+                save_data = json.load(file)
+
+            self.player_pokedex = save_data.get("player_pokedex", {"pokemons": []})
+            current_pokemon_data = save_data.get("current_pokemon", None)
+            if current_pokemon_data:
+                with open("Pokemon.json", "r", encoding="utf-8") as file:
+                    pokemon_data = json.load(file)
+
+                pokemon_info = next(
+                    (p for p in pokemon_data["pokemons"] if p["pokedex_id"] == current_pokemon_data["pokedex_id"]),
+                    None
+                )
+                
+                if pokemon_info:
+                    self.player_pokemon = Pokemon(pokemon_info)
+                    self.player_pokemon.level = current_pokemon_data["level"]
+                    self.player_pokemon.xp = current_pokemon_data["xp"]
+                    self.player_pokemon.xp_to_next_level = current_pokemon_data["xp_to_next_level"]
+                    self.player_pokemon.hp = current_pokemon_data["hp"]
+                    self.player_pokemon.max_hp = current_pokemon_data["max_hp"]
+                    self.player_pokemon.atk = current_pokemon_data["atk"]
+                    self.player_pokemon.defense = current_pokemon_data["defense"]
+
+            return True
+        except FileNotFoundError:
+            return False
+
+
     def main_game(self):
         run = True
         while run:
@@ -406,7 +471,6 @@ class Game():
                     if event.key == pygame.K_RIGHT:
                         self.starter_index = (self.starter_index + 1) % len(self.starters)
                     if event.key == pygame.K_RETURN:
-                        if event.key == pygame.K_RETURN:
                             selected_starter_data = self.starters[self.starter_index]
                             selected_starter = Pokemon(selected_starter_data) 
                             self.add_pokemon_to_pokedex(selected_starter)
@@ -419,7 +483,7 @@ class Game():
                             
                             fight = Fight(self.player_pokemon, enemy_pokemon)
                             fight.fight()
-                        
+                    
                     elif event.key == pygame.K_ESCAPE:
                         menu()
 
@@ -488,9 +552,15 @@ def menu():
                     menu_index = (menu_index - 1) % len(options)  
                 elif event.key == pygame.K_RETURN:  
                     if menu_index == 0:
+                        game.reset_pokedex()
                         game.main_game()
                     elif menu_index == 1:
-                        print("LAST SAVE")
+                        game.load_game()
+                        enemy_data = random.choice(data["pokemons"])
+                        enemy_pokemon = Pokemon(enemy_data)
+                        enemy_pokemon.level = max(1, game.player_pokemon.level - random.randint(0, 5))     
+                        fight = Fight(game.player_pokemon, enemy_pokemon)
+                        fight.fight()
                     elif menu_index == 2:
                         run_menu = False
                         pygame.quit()  
