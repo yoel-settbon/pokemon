@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD:data/Pokedex.json
     "pokemons": [
         {
             "pokedex_id": 1,
@@ -102,4 +103,20 @@
             "xp_to_next_level": 100
         }
     ]
+=======
+    "player_pokedex": {
+        "pokemons": []
+    },
+    "current_pokemon": {
+        "pokedex_id": 4,
+        "name": "Charmander",
+        "level": 5,
+        "xp": 50.0,
+        "xp_to_next_level": 100,
+        "hp": -20.5,
+        "max_hp": 19.5,
+        "atk": 26.0,
+        "defense": 21.5
+    }
+>>>>>>> 9f81ca4de923fe420e7e888c99519f6b2af160ab:Pokedex.json
 }
