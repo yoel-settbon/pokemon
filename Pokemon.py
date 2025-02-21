@@ -6,6 +6,7 @@ import time
 
 
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((1250, 800))
 background_fight = pygame.image.load("images/fight_template.png")
@@ -133,6 +134,12 @@ class Fight():
         self.player_pokemon = player_pokemon
         self.enemy_pokemon = enemy_pokemon
         self.run = True
+    
+    def fight_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/battle-theme.wav')
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(1.0)
 
     def display_pokemon(self):
         player_sprite = pygame.image.load(self.player_pokemon.sprite_back)
@@ -252,6 +259,7 @@ class Fight():
         draw_text(f"{pokemon.hp}/{pokemon.max_hp}", text_font, (255, 255, 255), x + 5, y - 25)
 
     def fight(self):
+        self.fight_music()
         self.fight_options = ["Attack", "Run", "Switch Pokemon"]
         self.fight_index = 0
         while self.run:
@@ -528,6 +536,10 @@ class Game():
 
 def menu():
     run_menu = True
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load('assets/audio/menu-theme.wav')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(1.0)
     screen.blit(background_menu, (0, 0))
     screen.blit(logo, (355, 10))
     menu_index = 0
