@@ -4,7 +4,6 @@ import json
 from pygame import *
 import time
 
-
 pygame.init()
 pygame.mixer.init()
 
@@ -18,8 +17,8 @@ WHITE = (255, 255, 255)
 YELLOW = (255, 228, 54)
 BLUE = (0, 128, 255)
 
-text_font = pygame.font.SysFont("Arial", 30)
-title_font = pygame.font.SysFont("Arial", 60)
+text_font = pygame.font.Font("Arial", 30)
+title_font = pygame.font.Font("Arial", 60)
 
 def draw_text(text, text_font, color, x, y):
     text_surface = text_font.render(text, True, color)
@@ -30,7 +29,6 @@ with open('data/Pokemon.json', 'r', encoding='utf-8') as file:
 
 with open('data/Pokedex.json', 'r', encoding='utf-8') as file:
     data2 = json.load(file)
-
 
 class Pokemon():
     def __init__(self, data):
@@ -305,7 +303,6 @@ class Fight():
 
             pygame.display.update()
 
-
 class Game():
     def __init__(self):
         self.player_pokedex = self.load_player_pokedex()
@@ -340,7 +337,6 @@ class Game():
         with open("data/Pokedex.json", "w", encoding="utf-8") as file:
             json.dump(self.player_pokedex, file, ensure_ascii=False, indent=4)
         print("Pokédex réinitialisé pour une nouvelle partie.")
-
 
     def load_starters(self):
         with open("data/Pokemon.json", "r", encoding="utf-8") as file:
@@ -391,7 +387,6 @@ class Game():
                 self.save_player_pokedex()
                 break
 
-
     def new_wild_pokemon(self):
         enemy_data = random.choice(data["pokemons"])
         enemy_pokemon = Pokemon(enemy_data)
@@ -410,11 +405,16 @@ class Game():
             screen.blit(pygame.image.load(starter["sprites"]["front"]), (x_position2, 250))
             draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 20, 300)
 
-
     def game_over(self):
-        screen.blit(background_menu, (0, 0))
-        draw_text("GAME OVER !", title_font, BLACK, 500, 400)
-        pygame.display.update()
+            game_over_image = pygame.image.load('assets/images/game-over.png')
+            game_over_image = pygame.transform.scale(game_over_image, (1250, 800))
+            screen.blit(game_over_image, (0, 0))
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('assets/audio/game-over-voice.wav')
+            pygame.display.update()
+            pygame.mixer.music.play()
+            pygame.time.delay(5000)
+
         
     def save_game(self):
         save_data = {
@@ -464,7 +464,6 @@ class Game():
             return True
         except FileNotFoundError:
             return False
-
 
     def main_game(self):
         run = True
@@ -577,3 +576,4 @@ def menu():
 
 game = Game()
 menu()
+
