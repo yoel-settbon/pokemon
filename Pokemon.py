@@ -45,14 +45,14 @@ class Pokemon():
 
         self.update_stats()
 
-        self.hp = int((self.base_hp / 10) * self.level)
-        self.atk = (self.base_atk / 10) * self.level
-        self.defense = (self.base_def / 10) * self.level
+        self.hp = int((2 * self.base_hp * self.level) / 100 + self.level + 10)
+        self.atk = int((2 * self.base_atk * self.level) / 100 + 5)
+        self.defense = int((2 * self.base_def * self.level) / 100 + 5)
         self.resistances = [
             (resistance["name"], resistance["multiplier"])
             for resistance in data["resistances"]
         ]
-        self.max_hp = (self.base_hp) / 10 * self.level
+        self.max_hp = int((2 * self.base_hp * self.level) / 100 + self.level + 10)
         self.xp = 0  
         self.xp_to_next_level = 100  
         self.evolution = data["evolution"]["next"]
@@ -242,10 +242,9 @@ class Fight():
     def switch_pokemon(self):
         selected_pokemon = game.display_pokedex_menu()
         if selected_pokemon:
-            selected_pokemon.update_stats()
-      
             self.player_pokemon = selected_pokemon
-            draw_text(f"{self.player_pokemon.name} est envoyé au combat !", text_font, BLACK, 100, 600)
+      
+
 
     def draw_health_bar(self, pokemon, x, y):
         pygame.draw.rect(screen, (169, 169, 169), (x, y, 200, 20))
@@ -499,14 +498,16 @@ class Game():
     def display_pokedex_menu(self):
         run = True
         pokedex_index = 0  
-
         while run:
             screen.blit(background_menu, (0, 0))
+            draw_text("Pokedex - Sélectionnez un Pokémon", title_font, BLACK, 200, 50)
+
             for i, pokemon_data in enumerate(self.player_pokedex["pokemons"]):
                 y_position = 150 + i * 100
-                color = BLUE if i == pokedex_index else YELLOW
-                pygame.draw.rect(screen, BLUE, (100, y_position - 10, 1050, 90))
+                color = YELLOW if i == pokedex_index else BLUE
+                pygame.draw.rect(screen, YELLOW, (100, y_position - 10, 1050, 90))
                 pygame.draw.rect(screen, color, (105, y_position - 5, 1040, 80))
+                screen.blit(pygame.image.load(pokemon_data["sprites"]["front"]), (120, y_position))
                 draw_text(f"{pokemon_data['name']['en']} - Nv. {pokemon_data.get('level', 1)}", text_font, BLACK, 200, y_position + 20)
 
             for event in pygame.event.get():
@@ -519,9 +520,16 @@ class Game():
                         pokedex_index = (pokedex_index - 1) % len(self.player_pokedex["pokemons"])
                     elif event.key == pygame.K_RETURN:
                         selected_pokemon_data = self.player_pokedex["pokemons"][pokedex_index]
+                        
                         selected_pokemon = Pokemon(selected_pokemon_data)
                         
-                        selected_pokemon.update_stats()
+                        selected_pokemon.level = selected_pokemon_data.get("level", 1)
+                        selected_pokemon.xp = selected_pokemon_data.get("xp", 0)
+                        selected_pokemon.xp_to_next_level = selected_pokemon_data.get("xp_to_next_level", 100)
+                        selected_pokemon.hp = selected_pokemon_data["stats"]["hp"]
+                        selected_pokemon.max_hp = selected_pokemon_data["stats"]["hp"]
+                        selected_pokemon.atk = selected_pokemon_data["stats"]["atk"]
+                        selected_pokemon.defense = selected_pokemon_data["stats"]["def"]
                         
                         return selected_pokemon
                     elif event.key == pygame.K_ESCAPE:
