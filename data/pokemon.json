@@ -6,8 +6,8 @@
                 "en": "Charmander"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/charmender.png",
-                "back" : "images/pokemons/pokemon-back/charmander.png"
+                "front": "assets/images/pokemon-face/charmender.png",
+                "back" : "assets/images/pokemon-back/charmander.png"
             },
             "types": [
                 {
@@ -115,8 +115,8 @@
                 "en": "Charmeleon"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/charmeleon.png",
-                "back" : "images/pokemons/pokemon-back/charmeleon.png"
+                "front": "assets/images/pokemon-face/charmeleon.png",
+                "back" : "assets/images/pokemon-back/charmeleon.png"
             },
             "types": [
                 {
@@ -225,8 +225,8 @@
                 "en": "Charizard"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/charizard.png",
-                "back" : "images/pokemons/pokemon-back/charizard.png"
+                "front": "assets/images/pokemon-face/charizard.png",
+                "back" : "assets/images/pokemon-back/charizard.png"
             },
             "types": [
                 {
@@ -334,8 +334,8 @@
                 "en": "Bulbasaur"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/bulbasaur.png",
-                "back" : "images/pokemons/pokemon-back/bulbasaur.png"
+                "front": "assets/images/pokemon-face/bulbasaur.png",
+                "back" : "assets/images/pokemon-back/bulbasaur.png"
             },
             "types": [
                 {
@@ -442,8 +442,8 @@
             "name": {
                 "en": "Ivysaur"},
             "sprites": {
-                "front": "images/pokemons/pokemon-face/ivysaur.png",
-                "back" : "images/pokemons/pokemon-back/ivysaur.png"
+                "front": "assets/images/pokemon-face/ivysaur.png",
+                "back" : "assets/images/pokemon-back/ivysaur.png"
             },
             "types": [
                 {
@@ -552,8 +552,8 @@
                 "en": "Venusaur"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/venusaur.png",
-                "back" : "images/pokemons/pokemon-back/venusaur.png"
+                "front": "assets/images/pokemon-face/venusaur.png",
+                "back" : "assets/images/pokemon-back/venusaur.png"
             },
             "types": [
                 {
@@ -660,8 +660,8 @@
             "name": {
                 "en": "Squirtle"},
             "sprites": {
-                "front": "images/pokemons/pokemon-face/squirtle.png",
-                "back" : "images/pokemons/pokemon-back/squirtle.png"
+                "front": "assets/images/pokemon-face/squirtle.png",
+                "back" : "assets/images/pokemon-back/squirtle.png"
             },
             "types": [
                 {
@@ -769,8 +769,8 @@
                 "en": "Wartortle"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/wartortle.png",
-                "back" : "images/pokemons/pokemon-back/wartortle.png"
+                "front": "assets/images/pokemon-face/wartortle.png",
+                "back" : "assets/images/pokemon-back/wartortle.png"
             },
             "types": [
                 {
@@ -879,8 +879,8 @@
                 "en": "Blastoise"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/blastoise.png",
-                "back" : "images/pokemons/pokemon-back/blastoise.png"
+                "front": "assets/images/pokemon-face/blastoise.png",
+                "back" : "assets/images/pokemon-back/blastoise.png"
             },
             "types": [
                 {
@@ -987,8 +987,8 @@
             "name": {
                 "en": "Mew" },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/mew.png",
-                "back" : "images/pokemons/pokemon-back/mew.png"
+                "front": "assets/images/pokemon-face/mew.png",
+                "back" : "assets/images/pokemon-back/mew.png"
              },
             "types": [
                 {
@@ -1085,8 +1085,8 @@
                 "en": "Gastly"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/gastly.png",
-                "back" : "images/pokemons/pokemon-back/gastly.png"
+                "front": "assets/images/pokemon-face/gastly.png",
+                "back" : "assets/images/pokemon-back/gastly.png"
             },
             "types": [
                 {
@@ -1193,8 +1193,8 @@
                 "en": "Haunter" 
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/haunter.png",
-                "back" : "images/pokemons/pokemon-back/haunter.png"
+                "front": "assets/images/pokemon-face/haunter.png",
+                "back" : "assets/images/pokemon-back/haunter.png"
              },
             "types": [
                 {
@@ -1305,8 +1305,8 @@
                 "en": "Gengar"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/gengar.png",
-                "back" : "images/pokemons/pokemon-back/gengar.png"
+                "front": "assets/images/pokemon-face/gengar.png",
+                "back" : "assets/images/pokemon-back/gengar.png"
             },
             "types": [
                 {
@@ -1415,8 +1415,8 @@
                 "en": "Pikachu"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/pikachu.png",
-                "back" : "images/pokemons/pokemon-back/picachu.png"
+                "front": "assets/images/pokemon-face/pikachu.png",
+                "back" : "assets/images/pokemon-back/picachu.png"
             },
             "types": [
                 {
@@ -1513,8 +1513,8 @@
                 "en": "Jirachi"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/jirachi.png",
-                "back" : "images/pokemons/pokemon-back/jirachi.png"
+                "front": "assets/images/pokemon-face/jirachi.png",
+                "back" : "assets/images/pokemon-back/jirachi.png"
             },
             "types": [
                 {
@@ -1610,8 +1610,8 @@
                 "en": "Hitmonchan"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/hitmonchan.png",
-                "back" : "images/pokemons/pokemon-back/hitmonchan.png"
+                "front": "assets/images/pokemon-face/hitmonchan.png",
+                "back" : "assets/images/pokemon-back/hitmonchan.png"
             },
             "types": [
                 {
@@ -1708,8 +1708,8 @@
                 "en": "Dratini"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/dratini.png",
-                "back" : "images/pokemons/pokemon-back/dratini.png"
+                "front": "assets/images/pokemon-face/dratini.png",
+                "back" : "assets/images/pokemon-back/dratini.png"
             },
             "types": [
                 {
@@ -1817,8 +1817,8 @@
                 "en": "Dragonair"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/dragonair.png",
-                "back" : "images/pokemons/pokemon-back/dragonair.png"
+                "front": "assets/images/pokemon-face/dragonair.png",
+                "back" : "assets/images/pokemon-back/dragonair.png"
             },
             "types": [
                 {
@@ -1927,8 +1927,8 @@
                 "en": "Dragonite"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/dragonite.png",
-                "back" : "images/pokemons/pokemon-back/dragonite.png"
+                "front": "assets/images/pokemon-face/dragonite.png",
+                "back" : "assets/images/pokemon-back/dragonite.png"
             },
             "types": [
                 {
@@ -2035,8 +2035,8 @@
                 "en": "M. Mime"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/mrmime.png",
-                "back" : "images/pokemons/pokemon-back/mrmime.png"
+                "front": "assets/images/pokemon-face/mrmime.png",
+                "back" : "assets/images/pokemon-back/mrmime.png"
             },
             "types": [
                 {
@@ -2133,8 +2133,8 @@
                 "en": "Lapras"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/lapras.png",
-                "back" : "images/pokemons/pokemon-back/lapras.png"
+                "front": "assets/images/pokemon-face/lapras.png",
+                "back" : "assets/images/pokemon-back/lapras.png"
             },
             "types": [
                 {
@@ -2230,8 +2230,8 @@
                 "en": "Scyther"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/scyther.png",
-                "back" : "images/pokemons/pokemon-back/scyther.png"
+                "front": "assets/images/pokemon-face/scyther.png",
+                "back" : "assets/images/pokemon-back/scyther.png"
             },
             "types": [
                 {
@@ -2328,8 +2328,8 @@
                 "en": "Snorlax"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/snorlax.png",
-                "back" : "images/pokemons/pokemon-back/snorlax.png"
+                "front": "assets/images/pokemon-face/snorlax.png",
+                "back" : "assets/images/pokemon-back/snorlax.png"
             },
             "types": [
                 {
@@ -2425,8 +2425,8 @@
                 "en": "Grimer"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/grimer.png",
-                "back" : "images/pokemons/pokemon-back/grimer.png"
+                "front": "assets/images/pokemon-face/grimer.png",
+                "back" : "assets/images/pokemon-back/grimer.png"
             },
             "types": [
                 {
@@ -2528,8 +2528,8 @@
                 "en": "Muk"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/muk.png",
-                "back" : "images/pokemons/pokemon-back/muk.png"
+                "front": "assets/images/pokemon-face/muk.png",
+                "back" : "assets/images/pokemon-back/muk.png"
             },
             "types": [
                 {
@@ -2631,8 +2631,8 @@
                 "en": "Onix"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/onix.png",
-                "back" : "images/pokemons/pokemon-back/onix.png"
+                "front": "assets/images/pokemon-face/onix.png",
+                "back" : "assets/images/pokemon-back/onix.png"
             },
             "types": [
                 {
@@ -2728,8 +2728,8 @@
                 "en": "Cubone"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/cubone.png",
-                "back" : "images/pokemons/pokemon-back/cubone.png"
+                "front": "assets/images/pokemon-face/cubone.png",
+                "back" : "assets/images/pokemon-back/cubone.png"
             },
             "types": [
                 {
@@ -2831,8 +2831,8 @@
                 "en": "Marowak"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/marowak.png",
-                "back" : "images/pokemons/pokemon-back/marowak.png"
+                "front": "assets/images/pokemon-face/marowak.png",
+                "back" : "assets/images/pokemon-back/marowak.png"
             },
             "types": [
                 {
@@ -2935,8 +2935,8 @@
                 "en": "Sableye"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/sableye.png",
-                "back" : "images/pokemons/pokemon-back/sableye.png"
+                "front": "assets/images/pokemon-face/sableye.png",
+                "back" : "assets/images/pokemon-back/sableye.png"
             },
             "types": [
                 {
@@ -3033,8 +3033,8 @@
                 "en": "Lugia"
             },
             "sprites": {
-                "front":"images/pokemons/pokemon-face/lugia.png",
-                "back" : "images/pokemons/pokemon-back/lugia.png"
+                "front":"assets/images/pokemon-face/lugia.png",
+                "back" : "assets/images/pokemon-back/lugia.png"
             },
             "types": [
                 {

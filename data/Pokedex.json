@@ -6,8 +6,8 @@
                 "en": "Bulbasaur"
             },
             "sprites": {
-                "front": "images/pokemons/pokemon-face/bulbasaur.png",
-                "back": "images/pokemons/pokemon-back/bulbasaur.png"
+                "front": "assets/images/pokemon-face/bulbasaur.png",
+                "back": "assets/images/pokemon-back/bulbasaur.png"
             },
             "types": [
                 {

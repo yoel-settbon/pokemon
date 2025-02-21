@@ -9,9 +9,9 @@ pygame.init()
 pygame.mixer.init()
 
 screen = pygame.display.set_mode((1250, 800))
-background_fight = pygame.image.load("images/fight_template.png")
-background_menu = pygame.image.load("images/menu_template_pokemon.jpg")
-logo = pygame.image.load("images/logo_pokemon.png")
+background_fight = pygame.image.load("assets/images/fight_template.png")
+background_menu = pygame.image.load("assets/images/menu_template_pokemon.jpg")
+logo = pygame.image.load("assets/images/logo_pokemon.png")
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -25,10 +25,10 @@ def draw_text(text, text_font, color, x, y):
     text_surface = text_font.render(text, True, color)
     screen.blit(text_surface, (x, y))
 
-with open('Pokemon.json', 'r', encoding='utf-8') as file:
+with open('data/Pokemon.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
-with open('Pokedex.json', 'r', encoding='utf-8') as file:
+with open('data/Pokedex.json', 'r', encoding='utf-8') as file:
     data2 = json.load(file)
 
 
@@ -97,7 +97,7 @@ class Pokemon():
 
         for evo in self.evolution:
             if self.level >= evo["condition"]:
-                with open('Pokemon.json', 'r', encoding='utf-8') as file:
+                with open('data/Pokemon.json', 'r', encoding='utf-8') as file:
                     pokemon_data = json.load(file)
                 
                 evolved_pokemon_data = next(
@@ -314,13 +314,13 @@ class Game():
 
     def load_player_pokedex(self):
         try:
-            with open("Pokedex.json", "r", encoding="utf-8") as file:
+            with open("data/Pokedex.json", "r", encoding="utf-8") as file:
                 return json.load(file)
         except FileNotFoundError:
             return {"pokemons": []}
 
     def save_player_pokedex(self):
-        with open("Pokedex.json", "w", encoding="utf-8") as file:
+        with open("data/Pokedex.json", "w", encoding="utf-8") as file:
             json.dump(self.player_pokedex, file, ensure_ascii=False, indent=4)
 
     def update_pokedex(self, pokemon):
@@ -337,13 +337,13 @@ class Game():
 
     def reset_pokedex(self):
         self.player_pokedex = {"pokemons": []}  
-        with open("Pokedex.json", "w", encoding="utf-8") as file:
+        with open("data/Pokedex.json", "w", encoding="utf-8") as file:
             json.dump(self.player_pokedex, file, ensure_ascii=False, indent=4)
         print("Pokédex réinitialisé pour une nouvelle partie.")
 
 
     def load_starters(self):
-        with open("Pokemon.json", "r", encoding="utf-8") as file:
+        with open("data/Pokemon.json", "r", encoding="utf-8") as file:
             data = json.load(file)
         
         starters_data = [
@@ -410,10 +410,17 @@ class Game():
             screen.blit(pygame.image.load(starter["sprites"]["front"]), (x_position2, 250))
             draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 20, 300)
 
+
     def game_over(self):
-        screen.blit(background_menu, (0, 0))
-        draw_text("GAME OVER !", title_font, BLACK, 500, 400)
-        pygame.display.update()
+            game_over_image = pygame.image.load('assets/images/game-over.png')
+            game_over_image = pygame.transform.scale(game_over_image, (1250, 800))
+            screen.blit(game_over_image, (0, 0))
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('assets/audio/game-over-voice.wav')
+            pygame.display.update()
+            pygame.mixer.music.play()
+            pygame.time.delay(5000)
+
         
     def save_game(self):
         save_data = {
@@ -431,18 +438,18 @@ class Game():
             }
         }
 
-        with open("Pokedex.json", "w", encoding="utf-8") as file:
+        with open("data/Pokedex.json", "w", encoding="utf-8") as file:
             json.dump(save_data, file, ensure_ascii=False, indent=4)
 
     def load_game(self):
         try:
-            with open("Pokedex.json", "r", encoding="utf-8") as file:
+            with open("data/Pokedex.json", "r", encoding="utf-8") as file:
                 save_data = json.load(file)
 
             self.player_pokedex = save_data.get("player_pokedex", {"pokemons": []})
             current_pokemon_data = save_data.get("current_pokemon", None)
             if current_pokemon_data:
-                with open("Pokemon.json", "r", encoding="utf-8") as file:
+                with open("data/Pokemon.json", "r", encoding="utf-8") as file:
                     pokemon_data = json.load(file)
 
                 pokemon_info = next(
