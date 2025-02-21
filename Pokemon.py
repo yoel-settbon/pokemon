@@ -17,8 +17,8 @@ WHITE = (255, 255, 255)
 YELLOW = (255, 228, 54)
 BLUE = (0, 128, 255)
 
-text_font = pygame.font.Font("Arial", 30)
-title_font = pygame.font.Font("Arial", 60)
+text_font = pygame.font.SysFont("Arial", 30)
+title_font = pygame.font.SysFont("Arial", 60)
 
 def draw_text(text, text_font, color, x, y):
     text_surface = text_font.render(text, True, color)
@@ -507,7 +507,6 @@ class Game():
                 color = YELLOW if i == pokedex_index else BLUE
                 pygame.draw.rect(screen, YELLOW, (100, y_position - 10, 1050, 90))
                 pygame.draw.rect(screen, color, (105, y_position - 5, 1040, 80))
-                screen.blit(pygame.image.load(pokemon_data["sprites"]["front"]), (120, y_position))
                 draw_text(f"{pokemon_data['name']['en']} - Nv. {pokemon_data.get('level', 1)}", text_font, BLACK, 200, y_position + 20)
 
             for event in pygame.event.get():
