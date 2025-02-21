@@ -135,27 +135,30 @@ class Fight():
 
     def display_pokemon(self):
         player_sprite = pygame.image.load(self.player_pokemon.sprite_back)
-        screen.blit(player_sprite, (100, 500))
-        draw_text(f"{self.player_pokemon.name} - Nv. {self.player_pokemon.level} - {self.player_pokemon.hp} HP", text_font, BLACK, 100, 450)
+        screen.blit(player_sprite, (100, 350))
+        draw_text(f"{self.player_pokemon.name} - Nv. {self.player_pokemon.level} - {self.player_pokemon.hp} HP", text_font, BLACK, 10, 450)
 
         enemy_sprite = pygame.image.load(self.enemy_pokemon.sprite_front)
         screen.blit(enemy_sprite, (800, 100))
         draw_text(f"{self.enemy_pokemon.name} - Nv. {self.enemy_pokemon.level} - {self.enemy_pokemon.hp} HP", text_font, BLACK, 800, 50)
 
     def menu_between(self):
-        self.choose = ["Fight","Pokedex","Save & Quit"] 
+        self.choose = ["Fight", "Pokedex", "Save & Quit"]
         self.choose_index = 0
         screen.blit(background_menu, (0, 0))
-        draw_text("Fight", text_font, BLACK, 100, 450)
-        draw_text("Pokedex", text_font, BLACK, 300, 450)
-        draw_text("Save & Quit", text_font, BLACK, 500, 450)
-        while True : 
+    
+        while True:
             for i, choice in enumerate(self.choose):
                 x_position = 100 + i * 200
                 x_position2 = 105 + i * 200
                 color = YELLOW if i == self.choose_index else BLUE
                 pygame.draw.rect(screen, YELLOW, (x_position, 20, 410, 160))
                 pygame.draw.rect(screen, color, (x_position2, 25, 400, 150))
+
+            draw_text("Fight", text_font, BLACK, 150, 75)
+            draw_text("Pokedex", text_font, BLACK, 350, 75)
+            draw_text("Save & Quit", text_font, BLACK, 550, 75)
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.run = False
@@ -172,7 +175,8 @@ class Fight():
                         if self.choose_index == 2:
                             game.save_player_pokedex()
                             return False
-            pygame.display.update()
+        
+                pygame.display.update()
 
     def attack(self, attack_type):
         base_damage = int(max(0, self.player_pokemon.atk - (self.enemy_pokemon.defense * 0.25)))
@@ -237,16 +241,16 @@ class Fight():
         while self.run:
             screen.blit(background_fight, (0, 0))
             self.display_pokemon()
-            draw_text(f"Exp : {self.player_pokemon.xp} / {self.player_pokemon.xp_to_next_level}", text_font, BLACK, 100, 350) 
+            draw_text(f"Exp : {self.player_pokemon.xp} / {self.player_pokemon.xp_to_next_level}", text_font, BLACK, 10, 400) 
             draw_text("Attack", text_font, BLACK, 100, 650)
             draw_text("Run", text_font, BLACK, 300, 650)
-            draw_text("Pokemon", text_font, BLACK, 500, 650)
+            draw_text("Pokemon", text_font, BLACK, 100, 650)
             for i, option in enumerate(self.fight_options):
-                x_position = 100 + i * 200
-                x_position2 = 105 + i * 200
+                x_position = 10 + i * 200
+                x_position2 = 15 + i * 200
                 color = YELLOW if i == self.fight_index else BLUE
-                pygame.draw.rect(screen, YELLOW, (x_position, 620, 410, 160))
-                pygame.draw.rect(screen, color, (x_position2, 625, 400, 150))
+                pygame.draw.rect(screen, YELLOW, (x_position, 620, 310, 175))
+                pygame.draw.rect(screen, color, (x_position2, 625, 300, 165))
                 draw_text(option, text_font, BLACK, x_position2 + 50, 650)
 
             for event in pygame.event.get():
@@ -364,15 +368,14 @@ class Game():
 
     def starter_selection(self):
         screen.blit(background_menu, (0, 0))
-        draw_text("Choisissez votre Pokémon starter :", title_font, BLACK, 200, 100)
         selected_starter = self.starters[self.starter_index]
         for i, starter in enumerate(self.starters):
             x_position = 200 + i * 300
             color = YELLOW if i == self.starter_index else BLUE
             pygame.draw.rect(screen, YELLOW, (x_position - 10, 300 - 10, 220, 220))
             pygame.draw.rect(screen, color, (x_position - 5, 300 - 5, 210, 210))
-            screen.blit(pygame.image.load(starter["sprites"]["front"]), (x_position, 350))
-            draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 30, 300)
+            screen.blit(pygame.image.load(starter["sprites"]["front"]), (x_position, 250))
+            draw_text(starter["name"]["en"].upper(), text_font, BLACK, x_position + 20, 300)
 
     def game_over(self):
         screen.blit(background_menu, (0, 0))
@@ -431,7 +434,6 @@ class Game():
                 color = YELLOW if i == pokedex_index else BLUE
                 pygame.draw.rect(screen, YELLOW, (100, y_position - 10, 1050, 90))
                 pygame.draw.rect(screen, color, (105, y_position - 5, 1040, 80))
-                screen.blit(pygame.image.load(pokemon_data["sprites"]["front"]), (120, y_position))
                 draw_text(f"{pokemon_data['name']['en']} - Nv. {pokemon_data.get('level', 1)}", text_font, BLACK, 200, y_position + 20)
 
             for event in pygame.event.get():
