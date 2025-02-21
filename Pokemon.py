@@ -5,6 +5,7 @@ import json
 from pygame import *
 
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((1250, 800))
 background_fight = pygame.image.load("images/fight_template.png")
@@ -132,6 +133,12 @@ class Fight():
         self.player_pokemon = player_pokemon
         self.enemy_pokemon = enemy_pokemon
         self.run = True
+    
+    def game_music(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('assets/audio/battle-theme.wav')
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(1.0)
 
     def display_pokemon(self):
         player_sprite = pygame.image.load(self.player_pokemon.sprite_back)
@@ -232,6 +239,7 @@ class Fight():
             draw_text(f"{self.player_pokemon.name} est envoyé au combat !", text_font, BLACK, 100, 600)
 
     def fight(self):
+        self.game_music()
         self.fight_options = ["Attack", "Run", "Switch Pokemon"]
         self.fight_index = 0
         while self.run:
